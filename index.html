@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Хочу всё знать — языковой центр в Зеленограде</title>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="site-header__bar container">
+      <a href="#top" class="logo">
+        <img src="assets/logo_knowschool.png" alt="Хочу всё знать" class="logo__image">
+        <span class="logo__text">Хочу всё<br>знать</span>
+      </a>
+
+      <nav class="nav-links">
+        <a class="nav-link" href="#programs">Языки</a>
+        <a class="nav-link" href="#about">О нас</a>
+        <a class="nav-link" href="#reviews">Отзывы</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="#zayavka">Контакты</a>
+      </nav>
+
+      <a class="nav-phone" href="tel:+79857429521">+7 (985) 742-95-21</a>
+
+      <button class="nav-burger" id="menuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="nav-burger__box">
+          <span class="nav-burger__line nav-burger__line--top"></span>
+          <span class="nav-burger__line nav-burger__line--mid"></span>
+          <span class="nav-burger__line nav-burger__line--bottom"></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-menu__nav">
+        <a class="mobile-menu__link" href="#programs">Языки</a>
+        <a class="mobile-menu__link" href="#about">О нас</a>
+        <a class="mobile-menu__link" href="#reviews">Отзывы</a>
+        <a class="mobile-menu__link" href="#faq">FAQ</a>
+        <a class="mobile-menu__link mobile-menu__link--last" href="#zayavka">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+
+    <!-- ===== 1. HERO ===== -->
+    <section class="hero">
+      <div class="hero__content">
+        <div class="hero__rating">
+          <span class="hero__stars">★★★★★</span>
+          5.0 · более 60 отзывов
+        </div>
+
+        <h1 class="hero__title">
+          Хочу<br>всё
+          <span class="hero__title-highlight">
+            <span class="hero__title-highlight-bg"></span>
+            <span class="hero__title-highlight-text">знать</span>
+          </span>
+        </h1>
+
+        <p class="hero__text">
+          Иностранные языки для детей и взрослых. Маленькие группы по 2–4 человека, педагоги с профильным образованием
+          и носители языка.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#zayavka" class="btn hero__cta">Записаться на занятие</a>
+          <a href="#programs" class="btn hero__link">Выбрать язык →</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero-card tile">
+          <div class="hero-card__blob hero-card__blob--top"></div>
+          <div class="hero-card__blob hero-card__blob--bottom"></div>
+          <div class="hero-card__glow"></div>
+          <img src="assets/girl.png" alt="Ученица центра" class="hero-card__image">
+        </div>
+
+        <div class="hero-stat hero-stat--years tile">
+          <div class="hero-stat__value">20 лет</div>
+          <div class="hero-stat__label">опыта обучения</div>
+        </div>
+
+        <div class="hero-stat hero-stat--langs tile">
+          <div class="hero-stat__value">8 языков</div>
+          <div class="hero-stat__label">от 640 ₽ за занятие</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. АКЦИИ ===== -->
+    <section id="promo" class="promo">
+      <div class="section-eyebrow">АКЦИИ</div>
+      <h2 class="section-title">Выгодно начать сейчас</h2>
+
+      <div class="promo__grid">
+        <div class="promo-card promo-card--main tile lift">
+          <div class="promo-card__blob promo-card__blob--1"></div>
+          <div class="promo-card__blob promo-card__blob--2"></div>
+          <div class="promo-card__body">
+            <span class="promo-card__badge">ГЛАВНАЯ АКЦИЯ</span>
+            <div class="promo-card__title">Первое занятие —<br>бесплатно</div>
+            <p class="promo-card__text">Проведём тестирование уровня, подберём программу и группу. Без обязательств.
+            </p>
+          </div>
+          <a href="#zayavka" class="btn promo-card__cta">Записаться бесплатно</a>
+        </div>
+
+        <div class="promo-card promo-card--semester tile lift">
+          <div class="promo-card__icon promo-card__icon--lg">−15%</div>
+          <div>
+            <div class="promo-card__heading">При оплате за семестр</div>
+            <div class="promo-card__sub">Фиксируем цену и место в группе на весь курс обучения.</div>
+          </div>
+        </div>
+
+        <div class="promo-card promo-card--friend tile lift">
+          <div class="promo-card__icon">2 = 3</div>
+          <div>
+            <div class="promo-card__heading">Приведи друга</div>
+            <div class="promo-card__sub">Занимайтесь вдвоём — третий месяц дешевле для обоих.</div>
+          </div>
+        </div>
+
+        <div class="promo-card promo-card--yearround tile lift">
+          <div class="promo-card__icon">365</div>
+          <div>
+            <div class="promo-card__heading">Набор круглый год</div>
+            <div class="promo-card__sub">Присоединиться к группе можно в любой месяц.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. ЯЗЫКИ ===== -->
+    <section id="programs" class="programs">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">ЯЗЫКИ</div>
+          <h2 class="section-title">Выберите язык</h2>
+        </div>
+      </div>
+
+      <div class="lang-picker">
+        <div class="lang-list" id="langList"></div>
+        <div class="lang-detail" id="langDetail"></div>
+      </div>
+    </section>
+
+    <!-- ===== 4. О НАС ===== -->
+    <section id="about" class="about">
+      <div class="about__grid">
+        <div class="about-card tile">
+          <div class="section-eyebrow">О ЦЕНТРЕ</div>
+          <h2 class="about-card__title">Учим языкам с 2005 года — так, чтобы на них говорили</h2>
+          <p class="about-card__text">
+            Небольшой языковой центр в Зеленограде с командой преподавателей, у каждого из которых профильное
+            педагогическое образование. Свои методики, материалы ведущих издательств и группы, где невозможно
+            отсидеться в углу.
+          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="about-stat__value">10+</div>
+              <div class="about-stat__label">педагогов,<br>включая носителей</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__value">2 500+</div>
+              <div class="about-stat__label">выпускников<br>центра</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__value">3–99</div>
+              <div class="about-stat__label">лет — учим<br>в любом возрасте</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual tile">
+          <div class="about-visual__glow"></div>
+          <img src="assets/boy.png" alt="Ученик центра" class="about-visual__image">
+          <div class="about-visual__note">
+            <div class="about-visual__note-title">Коммуникативный подход</div>
+            <div class="about-visual__note-text">Фильмы, пресса, музыка и живой диалог — с первого занятия</div>
+          </div>
+          <div class="about-visual__badge">
+            <div class="about-visual__badge-value">20 лет опыта</div>
+            <div class="about-visual__badge-label">обучения в Зеленограде</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="principles" id="principles"></div>
+    </section>
+
+    <!-- ===== 5. ОТЗЫВЫ ===== -->
+    <section id="reviews" class="reviews">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">ОТЗЫВЫ</div>
+          <h2 class="section-title">Что говорят ученики и родители</h2>
+        </div>
+        <a href="https://yandex.ru/maps/" target="_blank" rel="noopener" class="section-header__link">Все отзывы на
+          Яндекс Картах →</a>
+      </div>
+
+      <div class="reviews__grid" id="reviewsGrid">
+        <div class="review-summary tile">
+          <div>
+            <div class="review-summary__source">
+              <span class="review-summary__badge">Я</span>
+              <span class="review-summary__name">Яндекс Карты</span>
+            </div>
+            <div class="review-summary__score">
+              <div class="review-summary__value">4,9</div>
+              <div class="review-summary__stars">★★★★★</div>
+            </div>
+            <div class="review-summary__note">На основе 214 оценок пользователей Яндекс Карт</div>
+          </div>
+          <a href="https://yandex.ru/maps/" target="_blank" rel="noopener" class="btn review-summary__cta">Оставить
+            отзыв</a>
+        </div>
+        <!-- карточки отзывов добавляются скриптом (js/script.js → renderReviews) -->
+      </div>
+    </section>
+
+    <!-- ===== 6. FAQ ===== -->
+    <section id="faq" class="faq">
+      <div class="section-eyebrow">ВОПРОСЫ</div>
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq__columns">
+        <div class="faq__column" id="faqColumnLeft"></div>
+        <div class="faq__column" id="faqColumnRight"></div>
+      </div>
+    </section>
+
+    <!-- ===== 7. КОНТАКТЫ И ЗАЯВКА ===== -->
+    <section id="zayavka" class="contact">
+      <div class="section-eyebrow">КОНТАКТЫ</div>
+      <h2 class="section-title">Запишитесь на бесплатное занятие</h2>
+
+      <div class="contact__grid">
+        <div class="contact-map tile">
+          <iframe title="Карта проезда"
+            src="https://yandex.ru/map-widget/v1/?ll=37.214%2C55.991&z=15&pt=37.214,55.991,pm2blm"
+            class="contact-map__iframe" loading="lazy" allowfullscreen></iframe>
+
+          <div class="contact-map__card">
+            <div class="contact-map__title">Зеленоград, корпус 1432, н.п. 6</div>
+            <div class="contact-map__sub">5 минут пешком от станции Крюково. Вход со стороны двора.</div>
+
+            <div class="contact-map__details">
+              <div>
+                <div class="contact-map__label">ТЕЛЕФОН</div>
+                <a href="tel:+79857429521" class="contact-map__value">+7 (985) 742-95-21</a>
+              </div>
+              <div>
+                <div class="contact-map__label">ПОЧТА</div>
+                <a href="mailto:info@know-school.ru" class="contact-map__value">info@know-school.ru</a>
+              </div>
+              <div>
+                <div class="contact-map__label">ГРАФИК</div>
+                <div class="contact-map__value contact-map__value--static">Пн–Сб, 9:00–21:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card tile">
+          <div class="contact-form-card__blob contact-form-card__blob--1"></div>
+          <div class="contact-form-card__blob contact-form-card__blob--2"></div>
+
+          <div class="contact-form-card__body">
+            <div class="contact-form-card__title">Оставьте заявку</div>
+            <p class="contact-form-card__text">Администратор перезвонит в течение рабочего дня, ответит на вопросы и
+              подберёт удобное время.</p>
+
+            <form class="contact-form" id="contactForm" novalidate>
+              <input class="contact-form__input" type="text" name="name" placeholder="Имя*" required>
+              <input class="contact-form__input" type="tel" name="phone" placeholder="Телефон*" required>
+
+              <select class="contact-form__input contact-form__input--select" name="course">
+                <option>Английский язык</option>
+                <option>Немецкий язык</option>
+                <option>Французский язык</option>
+                <option>Испанский язык</option>
+                <option>Итальянский язык</option>
+                <option>Китайский язык</option>
+                <option>Русский как иностранный</option>
+                <option>Для детей 3–7 лет</option>
+              </select>
+
+              <div class="contact-form__captcha">
+                <span class="contact-form__captcha-icon"></span>
+                <span class="contact-form__captcha-text">SmartCaptcha от Яндекса</span>
+              </div>
+
+              <label class="contact-form__consent">
+                <input class="contact-form__checkbox" type="checkbox" required>
+                <span>Я согласен на обработку персональных данных в соответствии с
+                  <a href="#zayavka">политикой конфиденциальности</a></span>
+              </label>
+
+              <button type="submit" class="contact-form__submit" id="contactSubmit">Отправить заявку</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== ФУТЕР ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__top">
+      <div class="footer-about">
+        <a href="#top" class="footer-logo">
+          <img src="assets/logo_knowschool.png" alt="Хочу всё знать" class="footer-logo__image">
+        </a>
+        <p class="footer-about__text">Языковой центр в Зеленограде. Учим детей и взрослых говорить на восьми языках с
+          2005 года.</p>
+        <div class="footer-social">
+          <a href="#zayavka" class="footer-social__link">VK</a>
+          <a href="#zayavka" class="footer-social__link">TG</a>
+          <a href="#zayavka" class="footer-social__link">WA</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col__title">РАЗДЕЛЫ</div>
+        <nav class="footer-nav">
+          <a href="#programs">Языки</a>
+          <a href="#promo">Акции</a>
+          <a href="#about">О нас</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col__title">ДОКУМЕНТЫ</div>
+        <nav class="footer-nav">
+          <a href="#zayavka">Политика обработки персональных данных</a>
+          <a href="#zayavka">Согласие на обработку данных</a>
+          <a href="#zayavka">Использование файлов cookie</a>
+          <a href="#zayavka">Публичная оферта</a>
+          <a href="#zayavka">Реквизиты и лицензия</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col__title">КОНТАКТЫ</div>
+        <div class="footer-contacts">
+          <a href="tel:+79857429521" class="footer-contacts__phone">+7 (985) 742-95-21</a>
+          <a href="mailto:info@know-school.ru" class="footer-contacts__email">info@know-school.ru</a>
+          <div class="footer-contacts__address">Зеленоград, корпус 1432, н.п. 6<br>Пн–Сб, 9:00–21:00</div>
+          <a href="#zayavka" class="btn footer-contacts__cta">Записаться</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom-wrap">
+      <div class="site-footer__bottom">
+        <div class="footer-copy">© 2005–2026 Языковой центр «Хочу всё знать». Все права защищены.</div>
+        <div class="footer-legal">Не является публичной офертой · ИНН 7735000000</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
