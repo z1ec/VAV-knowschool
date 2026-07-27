@@ -265,7 +265,7 @@ function renderReviews() {
           <div class="review-card__name">${r.name}</div>
           <div class="review-card__role">${r.role}</div>
         </div>
-        <span class="review-card__source" title="Отзыв с Яндекс Карт">Я</span>
+        <img class="review-card__source" src="assets/Yandex_icon.svg.png" alt="" title="Отзыв с Яндекс Карт">
       </div>
     </div>
   `).join('');
@@ -337,6 +337,26 @@ function initContactForm() {
 }
 
 /* =========================================================
+   Cookie-баннер
+   ========================================================= */
+
+function initCookieBanner() {
+  const STORAGE_KEY = 'cookieConsent';
+  const banner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('cookieAccept');
+  if (!banner || !acceptBtn) return;
+
+  if (!localStorage.getItem(STORAGE_KEY)) {
+    banner.classList.add('is-visible');
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, '1');
+    banner.classList.remove('is-visible');
+  });
+}
+
+/* =========================================================
    Инициализация
    ========================================================= */
 
@@ -347,4 +367,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderReviews();
   initFaq();
   initContactForm();
+  initCookieBanner();
 });

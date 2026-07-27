@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Хочу всё знать — языковой центр в Зеленограде</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
@@ -173,10 +174,10 @@
           <div class="about-stats">
             <div class="about-stat">
               <div class="about-stat__value">10+</div>
-              <div class="about-stat__label">педагогов,<br>включая носителей</div>
+              <div class="about-stat__label">Опытных<br>педагогов</div>
             </div>
             <div class="about-stat">
-              <div class="about-stat__value">2 500+</div>
+              <div class="about-stat__value">500+</div>
               <div class="about-stat__label">выпускников<br>центра</div>
             </div>
             <div class="about-stat">
@@ -218,7 +219,7 @@
         <div class="review-summary tile">
           <div>
             <div class="review-summary__source">
-              <span class="review-summary__badge">Я</span>
+              <img class="review-summary__badge" src="assets/Yandex_icon.svg.png" alt="Яндекс">
               <span class="review-summary__name">Яндекс Карты</span>
             </div>
             <div class="review-summary__score">
@@ -253,7 +254,7 @@
       <div class="contact__grid">
         <div class="contact-map tile">
           <iframe title="Карта проезда"
-            src="https://yandex.ru/map-widget/v1/?ll=37.214%2C55.991&z=15&pt=37.214,55.991,pm2blm"
+            src="https://yandex.ru/map-widget/v1/?ll=37.154460%2C55.989607&z=15&pt=37.154460,55.989607,pm2blm"
             class="contact-map__iframe" loading="lazy" allowfullscreen></iframe>
 
           <div class="contact-map__card">
@@ -331,9 +332,7 @@
         <p class="footer-about__text">Языковой центр в Зеленограде. Учим детей и взрослых говорить на восьми языках с
           2005 года.</p>
         <div class="footer-social">
-          <a href="#zayavka" class="footer-social__link">VK</a>
-          <a href="#zayavka" class="footer-social__link">TG</a>
-          <a href="#zayavka" class="footer-social__link">WA</a>
+          <a href="https://vk.ru/zel_knowschool" class="footer-social__link">VK</a>
         </div>
       </div>
 
@@ -354,8 +353,6 @@
           <a href="#zayavka">Политика обработки персональных данных</a>
           <a href="#zayavka">Согласие на обработку данных</a>
           <a href="#zayavka">Использование файлов cookie</a>
-          <a href="#zayavka">Публичная оферта</a>
-          <a href="#zayavka">Реквизиты и лицензия</a>
         </nav>
       </div>
 
@@ -377,6 +374,16 @@
       </div>
     </div>
   </footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Уведомление об использовании файлов cookie">
+    <div class="cookie-banner__inner">
+      <p class="cookie-banner__text">
+        Мы используем файлы cookie, чтобы сайт работал корректно и был удобнее для вас. Продолжая пользоваться сайтом,
+        вы соглашаетесь с <a href="#zayavka">использованием файлов cookie</a>.
+      </p>
+      <button type="button" class="btn cookie-banner__accept" id="cookieAccept">Хорошо, принимаю</button>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
