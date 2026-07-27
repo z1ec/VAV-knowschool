@@ -7,7 +7,7 @@
 const LANGUAGES = [
   {
     id: 'en',
-    flagClass: 'lang-flag--en',
+    flag: 'assets/flags/en.svg',
     hi: 'Hello',
     title: 'Английский',
     country: 'ВЕЛИКОБРИТАНИЯ',
@@ -18,7 +18,7 @@ const LANGUAGES = [
   },
   {
     id: 'de',
-    flagClass: 'lang-flag--de',
+    flag: 'assets/flags/de.png',
     hi: 'Hallo',
     title: 'Немецкий',
     country: 'ГЕРМАНИЯ',
@@ -28,30 +28,8 @@ const LANGUAGES = [
     tags: ['Для детей', 'Для взрослых', 'Бизнес-курс', 'Экзамены'],
   },
   {
-    id: 'cn',
-    flagClass: 'lang-flag--cn',
-    hi: '你好',
-    title: 'Китайский',
-    country: 'КИТАЙ',
-    accent: '#c62b45',
-    price: 790,
-    desc: 'Иероглифика, тоны и произношение с первого занятия, подготовка к экзамену HSK.',
-    tags: ['С нуля', 'Иероглифика', 'HSK', 'Разговорный'],
-  },
-  {
-    id: 'fr',
-    flagClass: 'lang-flag--fr',
-    hi: 'Bonjour',
-    title: 'Французский',
-    country: 'ФРАНЦИЯ',
-    accent: '#0055a4',
-    price: 690,
-    desc: 'Фонетика, разговорная практика и культура — с нуля и для продолжающих.',
-    tags: ['С нуля', 'Продолжающие', 'Разговорный клуб'],
-  },
-  {
     id: 'es',
-    flagClass: 'lang-flag--es',
+    flag: 'assets/flags/es.svg',
     hi: 'Hola',
     title: 'Испанский',
     country: 'ИСПАНИЯ',
@@ -61,8 +39,30 @@ const LANGUAGES = [
     tags: ['С нуля', 'Разговорный', 'Страноведение'],
   },
   {
+    id: 'cn',
+    flag: 'assets/flags/cn.svg',
+    hi: '你好',
+    title: 'Китайский',
+    country: 'КИТАЙ',
+    accent: '#c62b45',
+    price: 790,
+    desc: 'Иероглифика, тоны и произношение с первого занятия, подготовка к экзамену HSK.',
+    tags: ['С нуля', 'Иероглифика', 'HSK', 'Разговорный'],
+  },
+  {
+    id: 'ko',
+    flag: 'assets/flags/ko.svg',
+    hi: '안녕하세요',
+    title: 'Корейский',
+    country: 'ЮЖНАЯ КОРЕЯ',
+    accent: '#0b6ba8',
+    price: 790,
+    desc: 'Хангыль, произношение и разговорная практика — от алфавита до свободного общения.',
+    tags: ['С нуля', 'Разговорный', 'TOPIK'],
+  },
+  {
     id: 'it',
-    flagClass: 'lang-flag--it',
+    flag: 'assets/flags/it.jpg',
     hi: 'Ciao',
     title: 'Итальянский',
     country: 'ИТАЛИЯ',
@@ -72,8 +72,19 @@ const LANGUAGES = [
     tags: ['С нуля', 'Разговорный', 'Для путешествий'],
   },
   {
+    id: 'la',
+    flag: 'assets/flags/la.png',
+    hi: 'Salve',
+    title: 'Латынь',
+    country: 'ВАТИКАН',
+    accent: '#8a1f2b',
+    price: 690,
+    desc: 'Грамматическая база европейских языков, медицинская и юридическая терминология, чтение оригиналов.',
+    tags: ['С нуля', 'Терминология', 'Для медиков и юристов'],
+  },
+  {
     id: 'ru',
-    flagClass: 'lang-flag--ru',
+    flag: 'assets/flags/ru.png',
     hi: 'Привет',
     title: 'Русский как иностранный',
     country: 'РОССИЯ',
@@ -83,10 +94,10 @@ const LANGUAGES = [
     tags: ['РКИ', 'Грамотность', 'Индивидуально'],
   },
   {
-    id: 'kids',
-    flagClass: 'lang-flag--kids',
+    id: 'school',
+    flag: 'assets/girl.png',
     hi: 'Привет!',
-    title: 'Для детей 3–7 лет',
+    title: 'Подготовка к школе',
     country: 'РАННЕЕ РАЗВИТИЕ',
     accent: '#e08a1e',
     price: 590,
@@ -166,7 +177,7 @@ function initLanguagePicker() {
   function renderList() {
     listEl.innerHTML = LANGUAGES.map((lang, i) => `
       <button class="lang-list__item${i === selectedIndex ? ' is-active' : ''}" data-index="${i}" type="button">
-        <span class="lang-list__flag ${lang.flagClass}"></span>
+        <img class="lang-list__flag" src="${lang.flag}" alt="" loading="lazy">
         <span class="lang-list__title">${lang.title}</span>
         <span class="lang-list__arrow">→</span>
       </button>
@@ -183,7 +194,7 @@ function initLanguagePicker() {
 
   function renderDetail() {
     const lang = LANGUAGES[selectedIndex];
-    detailEl.style.setProperty('--lang-flag', getFlagCssValue(lang.flagClass));
+    detailEl.style.setProperty('--lang-flag', lang.accent);
     detailEl.style.setProperty('--lang-accent', lang.accent);
 
     detailEl.innerHTML = `
@@ -191,14 +202,16 @@ function initLanguagePicker() {
       <div class="lang-detail__blob lang-detail__blob--2"></div>
       <div class="lang-detail__top">
         <div class="lang-detail__country-row">
-          <span class="lang-detail__flag"></span>
+          <img class="lang-detail__flag" src="${lang.flag}" alt="" loading="lazy">
           <span class="lang-detail__country">${lang.country}</span>
         </div>
-        <div class="lang-detail__hi">${lang.hi}</div>
-        <h3 class="lang-detail__title">${lang.title}</h3>
-        <p class="lang-detail__desc">${lang.desc}</p>
-        <div class="lang-detail__tags">
-          ${lang.tags.map((t) => `<span class="lang-detail__tag">${t}</span>`).join('')}
+        <div class="lang-detail__copy">
+          <div class="lang-detail__hi">${lang.hi}</div>
+          <h3 class="lang-detail__title">${lang.title}</h3>
+          <p class="lang-detail__desc">${lang.desc}</p>
+          <div class="lang-detail__tags">
+            ${lang.tags.map((t) => `<span class="lang-detail__tag">${t}</span>`).join('')}
+          </div>
         </div>
       </div>
       <div class="lang-detail__bottom">
@@ -210,20 +223,6 @@ function initLanguagePicker() {
 
   renderList();
   renderDetail();
-}
-
-/** Читает background конкретного .lang-flag--* класса из styles.css,
- *  чтобы использовать тот же градиент в фоновых пятнах карточки языка. */
-function getFlagCssValue(flagClass) {
-  const probe = document.createElement('span');
-  probe.className = `lang-list__flag ${flagClass}`;
-  probe.style.position = 'absolute';
-  probe.style.visibility = 'hidden';
-  document.body.appendChild(probe);
-  const value = getComputedStyle(probe).backgroundImage;
-  const solid = getComputedStyle(probe).backgroundColor;
-  document.body.removeChild(probe);
-  return value && value !== 'none' ? `${value}, ${solid}` : solid;
 }
 
 /* =========================================================
