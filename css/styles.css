@@ -34,6 +34,11 @@ body {
   font-family: var(--font-family);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 a {
@@ -338,9 +343,10 @@ section[id] {
 }
 
 .hero__badge-icon {
-  width: 15px;
-  height: 15px;
+  width: 24px;
+  height: auto;
   flex: none;
+  object-fit: contain;
 }
 
 .hero__subtitle {
@@ -553,28 +559,26 @@ section[id] {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    /* вписываем весь hero в один экран под шапкой (84px ~ высота хедера + верхний отступ);
-       именно height (а не min-height) — иначе высота hero-card в дочернем блоке (height:100%)
-       не резолвится в некоторых мобильных браузерах, и картинка/фон пропадают */
-    height: calc(100vh - 84px) !important;
-    height: calc(100svh - 84px) !important;
+    gap: 20px;
+    /* контента в hero__content стало больше (подзаголовок + список), поэтому больше не
+       вписываем hero принудительно в один экран — блок растёт под свой контент, а
+       hero__visual получает собственную высоту вместо равной доли с hero__content */
+    min-height: calc(100svh - 84px);
     text-align: center;
   }
 
   .hero__content {
     order: 2;
-    flex: 1 1 0;
-    min-height: 0;
+    flex: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-bottom: 8px;
   }
 
   .hero__visual {
     order: 1;
-    flex: 1 1 0;
-    min-height: 0;
+    flex: none;
+    height: clamp(280px, 42vh, 420px);
     margin-bottom: 0;
   }
 
@@ -631,6 +635,14 @@ section[id] {
   .hero-stat {
     padding: 10px 14px;
     border-radius: 14px;
+  }
+
+  .hero-stat--years {
+    left: 10px;
+  }
+
+  .hero-stat--langs {
+    right: 10px;
   }
 
   .hero-stat__value {
