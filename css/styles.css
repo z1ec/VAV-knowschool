@@ -1632,6 +1632,78 @@ section[id] {
   }
 }
 
+/* ---------- Фото центра ---------- */
+
+.gallery {
+  margin-top: 44px;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "left mid-top    right"
+    "left mid-bottom right";
+  gap: 16px;
+  height: clamp(420px, 42vw, 560px);
+}
+
+.gallery-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #dfe7f0;
+}
+
+.gallery-photo__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.gallery-photo:hover .gallery-photo__img {
+  transform: scale(1.05);
+}
+
+.gallery-photo--left {
+  grid-area: left;
+  border-radius: 28px;
+}
+
+.gallery-photo--right {
+  grid-area: right;
+  border-radius: 28px;
+}
+
+.gallery-photo--mid-top {
+  grid-area: mid-top;
+}
+
+.gallery-photo--mid-bottom {
+  grid-area: mid-bottom;
+}
+
+@media (max-width: 720px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: none;
+    height: auto;
+  }
+
+  .gallery-photo--left,
+  .gallery-photo--right,
+  .gallery-photo--mid-top,
+  .gallery-photo--mid-bottom {
+    grid-area: auto;
+    height: 260px;
+  }
+}
+
 /* ---------- Контакты и заявка ---------- */
 
 .contact {
