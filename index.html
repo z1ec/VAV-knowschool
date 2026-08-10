@@ -154,8 +154,284 @@
       </div>
 
       <div class="lang-picker">
-        <div class="lang-list" id="langList"></div>
-        <div class="lang-detail" id="langDetail"></div>
+        <div class="lang-list" id="langList">
+          <button class="lang-list__item is-active" data-index="0" type="button">
+            <img class="lang-list__flag" src="assets/flags/en.svg" alt="" loading="lazy">
+            <span class="lang-list__title">Английский</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="1" type="button">
+            <img class="lang-list__flag" src="assets/flags/de.png" alt="" loading="lazy">
+            <span class="lang-list__title">Немецкий</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="2" type="button">
+            <img class="lang-list__flag" src="assets/flags/es.svg" alt="" loading="lazy">
+            <span class="lang-list__title">Испанский</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="3" type="button">
+            <img class="lang-list__flag" src="assets/flags/cn.svg" alt="" loading="lazy">
+            <span class="lang-list__title">Китайский</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="4" type="button">
+            <img class="lang-list__flag" src="assets/flags/ko.svg" alt="" loading="lazy">
+            <span class="lang-list__title">Корейский</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="5" type="button">
+            <img class="lang-list__flag" src="assets/flags/it.jpg" alt="" loading="lazy">
+            <span class="lang-list__title">Итальянский</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="6" type="button">
+            <img class="lang-list__flag" src="assets/flags/la.png" alt="" loading="lazy">
+            <span class="lang-list__title">Латынь</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="7" type="button">
+            <img class="lang-list__flag" src="assets/flags/ru.png" alt="" loading="lazy">
+            <span class="lang-list__title">Русский как иностранный</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+          <button class="lang-list__item" data-index="8" type="button">
+            <img class="lang-list__flag" src="assets/girl.png" alt="" loading="lazy">
+            <span class="lang-list__title">Подготовка к школе</span>
+            <span class="lang-list__arrow">→</span>
+          </button>
+        </div>
+
+        <div class="lang-detail" id="langDetail">
+          <div class="lang-detail__panel is-active" data-index="0" style="--lang-flag:#0d47c1;--lang-accent:#0d47c1;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/en.svg" alt="" loading="lazy">
+                <span class="lang-detail__country">ВЕЛИКОБРИТАНИЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Hello</div>
+                <h3 class="lang-detail__title">Английский</h3>
+                <p class="lang-detail__desc">Самое востребованное направление: от первых слов до свободной речи и международных экзаменов.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">Общий курс</span>
+                  <span class="lang-detail__tag">Интенсив</span>
+                  <span class="lang-detail__tag">Бизнес</span>
+                  <span class="lang-detail__tag">ЕГЭ и ОГЭ</span>
+                  <span class="lang-detail__tag">FCE</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 640 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="1" style="--lang-flag:#c1440e;--lang-accent:#c1440e;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/de.png" alt="" loading="lazy">
+                <span class="lang-detail__country">ГЕРМАНИЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Hallo</div>
+                <h3 class="lang-detail__title">Немецкий</h3>
+                <p class="lang-detail__desc">Структурный подход к грамматике и много живой практики — для учёбы, работы и переезда.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">Для детей</span>
+                  <span class="lang-detail__tag">Для взрослых</span>
+                  <span class="lang-detail__tag">Бизнес-курс</span>
+                  <span class="lang-detail__tag">Экзамены</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="2" style="--lang-flag:#c9871a;--lang-accent:#c9871a;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/es.svg" alt="" loading="lazy">
+                <span class="lang-detail__country">ИСПАНИЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Hola</div>
+                <h3 class="lang-detail__title">Испанский</h3>
+                <p class="lang-detail__desc">Живой диалог, музыка и страноведение — язык, на котором начинают говорить быстрее всего.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Разговорный</span>
+                  <span class="lang-detail__tag">Страноведение</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="3" style="--lang-flag:#c62b45;--lang-accent:#c62b45;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/cn.svg" alt="" loading="lazy">
+                <span class="lang-detail__country">КИТАЙ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">你好</div>
+                <h3 class="lang-detail__title">Китайский</h3>
+                <p class="lang-detail__desc">Иероглифика, тоны и произношение с первого занятия, подготовка к экзамену HSK.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Иероглифика</span>
+                  <span class="lang-detail__tag">HSK</span>
+                  <span class="lang-detail__tag">Разговорный</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 790 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="4" style="--lang-flag:#0b6ba8;--lang-accent:#0b6ba8;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/ko.svg" alt="" loading="lazy">
+                <span class="lang-detail__country">ЮЖНАЯ КОРЕЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">안녕하세요</div>
+                <h3 class="lang-detail__title">Корейский</h3>
+                <p class="lang-detail__desc">Хангыль, произношение и разговорная практика — от алфавита до свободного общения.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Разговорный</span>
+                  <span class="lang-detail__tag">TOPIK</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 790 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="5" style="--lang-flag:#1f8a63;--lang-accent:#1f8a63;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/it.jpg" alt="" loading="lazy">
+                <span class="lang-detail__country">ИТАЛИЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Ciao</div>
+                <h3 class="lang-detail__title">Итальянский</h3>
+                <p class="lang-detail__desc">Мелодика речи, грамматика без зубрёжки и свободное общение на бытовые темы.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Разговорный</span>
+                  <span class="lang-detail__tag">Для путешествий</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="6" style="--lang-flag:#8a1f2b;--lang-accent:#8a1f2b;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/la.png" alt="" loading="lazy">
+                <span class="lang-detail__country">ВАТИКАН</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Salve</div>
+                <h3 class="lang-detail__title">Латынь</h3>
+                <p class="lang-detail__desc">Грамматическая база европейских языков, медицинская и юридическая терминология, чтение оригиналов.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Терминология</span>
+                  <span class="lang-detail__tag">Для медиков и юристов</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="7" style="--lang-flag:#0039a6;--lang-accent:#0039a6;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/flags/ru.png" alt="" loading="lazy">
+                <span class="lang-detail__country">РОССИЯ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Привет</div>
+                <h3 class="lang-detail__title">Русский как иностранный</h3>
+                <p class="lang-detail__desc">Модульные программы для иностранцев и курс общей грамотности для взрослых.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">РКИ</span>
+                  <span class="lang-detail__tag">Грамотность</span>
+                  <span class="lang-detail__tag">Индивидуально</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 740 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+
+          <div class="lang-detail__panel" data-index="8" style="--lang-flag:#e08a1e;--lang-accent:#e08a1e;">
+            <div class="lang-detail__blob lang-detail__blob--1"></div>
+            <div class="lang-detail__blob lang-detail__blob--2"></div>
+            <div class="lang-detail__top">
+              <div class="lang-detail__country-row">
+                <img class="lang-detail__flag" src="assets/girl.png" alt="" loading="lazy">
+                <span class="lang-detail__country">РАННЕЕ РАЗВИТИЕ</span>
+              </div>
+              <div class="lang-detail__copy">
+                <div class="lang-detail__hi">Привет!</div>
+                <h3 class="lang-detail__title">Подготовка к школе</h3>
+                <p class="lang-detail__desc">«Любопышки», «Почемучка» и «Дошкольник» — развитие, речь и подготовка к школе в игре.</p>
+                <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">Любопышки</span>
+                  <span class="lang-detail__tag">Почемучка</span>
+                  <span class="lang-detail__tag">Дошкольник</span>
+                </div>
+              </div>
+            </div>
+            <div class="lang-detail__bottom">
+              <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
+              <div class="lang-detail__price"><strong>от 590 ₽</strong><br>за занятие 45 минут</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -210,7 +486,36 @@
         </div>
       </div>
 
-      <div class="principles" id="principles"></div>
+      <div class="principles" id="principles">
+        <div class="principle-card tile lift">
+          <div class="principle-card__num">01</div>
+          <div>
+            <div class="principle-card__title">Группы 2–4 человека</div>
+            <div class="principle-card__desc">Каждый говорит на каждом занятии, а не отсиживается в углу.</div>
+          </div>
+        </div>
+        <div class="principle-card tile lift">
+          <div class="principle-card__num">02</div>
+          <div>
+            <div class="principle-card__title">Низкие цены</div>
+            <div class="principle-card__desc">От 640 р. за занятие - цены доступные каждому.</div>
+          </div>
+        </div>
+        <div class="principle-card tile lift">
+          <div class="principle-card__num">03</div>
+          <div>
+            <div class="principle-card__title">Свои методики</div>
+            <div class="principle-card__desc">Авторские программы и материалы ведущих мировых издательств.</div>
+          </div>
+        </div>
+        <div class="principle-card tile lift">
+          <div class="principle-card__num">04</div>
+          <div>
+            <div class="principle-card__title">Удобный график</div>
+            <div class="principle-card__desc">Утро, вечер и выходные. Набор в группы идёт круглый год.</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ===== 5. ОТЗЫВЫ ===== -->
@@ -240,7 +545,57 @@
           <a href="https://yandex.ru/maps/org/khochu_vsyo_znat/1088892966" target="_blank" rel="noopener" class="btn review-summary__cta">Оставить
             отзыв</a>
         </div>
-        <!-- карточки отзывов добавляются скриптом (js/script.js → renderReviews) -->
+
+        <div class="review-card tile">
+          <div class="review-card__top">
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__date">12 мая 2026</div>
+          </div>
+          <p class="review-card__text">Дочка ходит на английский второй год. Маленькая группа, педагог замечает
+            каждого — прогресс виден по школьным оценкам и по тому, как она смотрит фильмы в оригинале.</p>
+          <div class="review-card__footer">
+            <span class="review-card__avatar">ОК</span>
+            <div class="review-card__meta">
+              <div class="review-card__name">Ольга К.</div>
+              <div class="review-card__role">мама ученицы, 10 лет</div>
+            </div>
+            <img class="review-card__source" src="assets/Yandex_icon.svg.png" alt="" title="Отзыв с Яндекс Карт">
+          </div>
+        </div>
+
+        <div class="review-card tile">
+          <div class="review-card__top">
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__date">3 апреля 2026</div>
+          </div>
+          <p class="review-card__text">Готовился к ЕГЭ здесь после того, как репетитор не помог. Сдал на 91 балл.
+            Отдельное спасибо за разбор реальных заданий и спокойную атмосферу.</p>
+          <div class="review-card__footer">
+            <span class="review-card__avatar">ДМ</span>
+            <div class="review-card__meta">
+              <div class="review-card__name">Даниил М.</div>
+              <div class="review-card__role">выпускник, 11 класс</div>
+            </div>
+            <img class="review-card__source" src="assets/Yandex_icon.svg.png" alt="" title="Отзыв с Яндекс Карт">
+          </div>
+        </div>
+
+        <div class="review-card tile">
+          <div class="review-card__top">
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__date">21 февраля 2026</div>
+          </div>
+          <p class="review-card__text">Учу немецкий для работы. Удобный график, живые темы, преподаватель
+            подстраивает материал под мои задачи. Через полгода уже веду переписку с партнёрами.</p>
+          <div class="review-card__footer">
+            <span class="review-card__avatar">ИВ</span>
+            <div class="review-card__meta">
+              <div class="review-card__name">Ирина В.</div>
+              <div class="review-card__role">взрослая группа</div>
+            </div>
+            <img class="review-card__source" src="assets/Yandex_icon.svg.png" alt="" title="Отзыв с Яндекс Карт">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -250,8 +605,64 @@
       <h2 class="section-title">Частые вопросы</h2>
 
       <div class="faq__columns">
-        <div class="faq__column" id="faqColumnLeft"></div>
-        <div class="faq__column" id="faqColumnRight"></div>
+        <div class="faq__column" id="faqColumnLeft">
+          <div class="faq-item tile" data-index="0">
+            <div class="faq-item__head">
+              <div class="faq-item__question">С какого возраста берёте детей?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>С 3 лет — в группы раннего развития «Любопышки» и «Почемучка». С 5–6 лет работает группа «Дошкольник» с подготовкой к школе.</p>
+            </div>
+          </div>
+          <div class="faq-item tile" data-index="1">
+            <div class="faq-item__head">
+              <div class="faq-item__question">Сколько человек в группе?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Группы маленькие — от 2 до 6 человек, чаще 2–4. Это позволяет педагогу уделить внимание каждому ученику. Есть и индивидуальные занятия.</p>
+            </div>
+          </div>
+          <div class="faq-item tile" data-index="2">
+            <div class="faq-item__head">
+              <div class="faq-item__question">Есть ли занятия с носителями языка?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Да. Помимо преподавателей с профильным образованием, с учениками работают носители языка — на тематических занятиях в формате живого диалога.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__column" id="faqColumnRight">
+          <div class="faq-item tile" data-index="3">
+            <div class="faq-item__head">
+              <div class="faq-item__question">Как проходит первое занятие?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Первое занятие бесплатное: мы проводим тестирование уровня, подбираем программу, группу и учебные материалы под ваши цели.</p>
+            </div>
+          </div>
+          <div class="faq-item tile" data-index="4">
+            <div class="faq-item__head">
+              <div class="faq-item__question">Готовите к ЕГЭ, ОГЭ и экзаменам?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Да — к ОГЭ (9 класс), ЕГЭ (11 класс) и международным экзаменам. Наши выпускники поступают в профильные вузы и учебные заведения за рубежом.</p>
+            </div>
+          </div>
+          <div class="faq-item tile" data-index="5">
+            <div class="faq-item__head">
+              <div class="faq-item__question">Где вы находитесь?</div>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Зеленоград, корпус 1432, н.п. 6. Телефон +7 (985) 742-95-21, почта info@know-school.ru. Набор в группы идёт круглый год.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

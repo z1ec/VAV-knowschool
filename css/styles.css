@@ -846,6 +846,16 @@ section[id] {
   flex-direction: column;
 }
 
+.lang-detail__panel {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.lang-detail__panel.is-active {
+  display: flex;
+}
+
 .lang-detail__blob--1 {
   position: absolute;
   right: -70px;
