@@ -23,6 +23,7 @@
 
       <nav class="nav-links">
         <a class="nav-link" href="#programs">Языки</a>
+        <a class="nav-link" href="#prices">Цены</a>
         <a class="nav-link" href="#about">О нас</a>
         <a class="nav-link" href="#reviews">Отзывы</a>
         <a class="nav-link" href="#faq">FAQ</a>
@@ -43,6 +44,7 @@
     <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-menu__nav">
         <a class="mobile-menu__link" href="#programs">Языки</a>
+        <a class="mobile-menu__link" href="#prices">Цены</a>
         <a class="mobile-menu__link" href="#about">О нас</a>
         <a class="mobile-menu__link" href="#reviews">Отзывы</a>
         <a class="mobile-menu__link" href="#faq">FAQ</a>
@@ -58,7 +60,17 @@
       <div class="hero__content">
         <div class="hero__rating">
           <span class="hero__stars">★★★★★</span>
-          5.0 · более 60 отзывов
+          5.0
+          <span class="hero__badge">
+            <svg class="hero__badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="9" r="6.25" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M12 4.5l1.1 2.28 2.5.37-1.8 1.77.42 2.5L12 10.3l-2.22 1.17.42-2.5-1.8-1.77 2.5-.37L12 4.5z"
+                fill="currentColor"></path>
+              <path d="M8.7 14.4L7 20l5-2.6L17 20l-1.7-5.6" stroke="currentColor" stroke-width="1.6"
+                stroke-linejoin="round"></path>
+            </svg>
+            Хорошее место 2026
+          </span>
         </div>
 
         <h1 class="hero__title">
@@ -68,11 +80,16 @@
             <span class="hero__title-highlight-text">знать</span>
           </span>
         </h1>
+        <p class="hero__subtitle">языковой центр в Зеленограде</p>
 
-        <p class="hero__text">
-          Иностранные языки для детей и взрослых. Маленькие группы по 2–4 человека, педагоги с профильным образованием
-          и носители языка.
-        </p>
+        <p class="hero__text">Заговорите на иностранном языке уверенно</p>
+        <ul class="hero__list">
+          <li>Программы для детей и взрослых</li>
+          <li>Мини-группы до 4 человек и индивидуально</li>
+          <li>Педагоги с профильным образованием и практическим опытом</li>
+          <li>Обучение по современным учебникам — актуальные знания и эффективные методики</li>
+          <li>Занятия оффлайн и онлайн. Набор круглый год.</li>
+        </ul>
 
         <div class="hero__actions">
           <a href="#zayavka" class="btn hero__cta">Записаться на занятие</a>
@@ -95,7 +112,7 @@
 
         <div class="hero-stat hero-stat--langs tile">
           <div class="hero-stat__value">8 языков</div>
-          <div class="hero-stat__label">от 640 ₽ за занятие</div>
+          <div class="hero-stat__label">от 700 руб за занятие</div>
         </div>
       </div>
     </section>
@@ -111,7 +128,7 @@
           <div class="promo-card__blob promo-card__blob--2"></div>
           <div class="promo-card__body">
             <span class="promo-card__badge">ГЛАВНАЯ АКЦИЯ</span>
-            <div class="promo-card__title">Первое занятие —<br>бесплатно</div>
+            <div class="promo-card__title">Первое занятие —<br>бесплатное</div>
             <p class="promo-card__text">Проведём тестирование уровня, подберём программу и группу. Без обязательств.
             </p>
           </div>
@@ -119,18 +136,26 @@
         </div>
 
         <div class="promo-card promo-card--semester tile lift">
-          <div class="promo-card__icon promo-card__icon--lg">−15%</div>
+          <div class="promo-card__icon promo-card__icon--lg">−25%</div>
           <div>
-            <div class="promo-card__heading">При оплате за семестр</div>
-            <div class="promo-card__sub">Фиксируем цену и место в группе на весь курс обучения.</div>
+            <div class="promo-card__heading">На первый месяц</div>
+            <div class="promo-card__sub">При оплате в день пробного занятия.</div>
           </div>
         </div>
 
         <div class="promo-card promo-card--friend tile lift">
-          <div class="promo-card__icon">2 = 3</div>
+          <div class="promo-card__icon">−10%</div>
+          <div>
+            <div class="promo-card__heading">Для второго члена семьи</div>
+            <div class="promo-card__sub">Или на второй язык.</div>
+          </div>
+        </div>
+
+        <div class="promo-card promo-card--referral tile lift">
+          <div class="promo-card__icon">−5%</div>
           <div>
             <div class="promo-card__heading">Приведи друга</div>
-            <div class="promo-card__sub">Занимайтесь вдвоём — третий месяц дешевле для обоих.</div>
+            <div class="promo-card__sub">Получи скидку на оплату занятий, пока занимается твой друг.</div>
           </div>
         </div>
 
@@ -192,7 +217,7 @@
           </button>
           <button class="lang-list__item" data-index="7" type="button">
             <img class="lang-list__flag" src="assets/flags/ru.png" alt="" loading="lazy">
-            <span class="lang-list__title">Русский как иностранный</span>
+            <span class="lang-list__title">Русский язык</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="8" type="button">
@@ -214,19 +239,18 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Hello</div>
                 <h3 class="lang-detail__title">Английский</h3>
-                <p class="lang-detail__desc">Самое востребованное направление: от первых слов до свободной речи и международных экзаменов.</p>
+                <p class="lang-detail__desc">Познайте английский язык как великое наследие, где воплотились вкус классического пятичасового чаепития, бессмертные шедевры Шекспира и вековые королевские традиции. Начните обучение и заговорите на главном языке планеты!</p>
                 <div class="lang-detail__tags">
-                  <span class="lang-detail__tag">Общий курс</span>
-                  <span class="lang-detail__tag">Интенсив</span>
-                  <span class="lang-detail__tag">Бизнес</span>
-                  <span class="lang-detail__tag">ЕГЭ и ОГЭ</span>
-                  <span class="lang-detail__tag">FCE</span>
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">для детей</span>
+                  <span class="lang-detail__tag">для взрослых</span>
+                  <span class="lang-detail__tag">ОГЭ и ЕГЭ</span>
+                  <span class="lang-detail__tag">Школьная программа</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 640 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -241,18 +265,17 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Hallo</div>
                 <h3 class="lang-detail__title">Немецкий</h3>
-                <p class="lang-detail__desc">Структурный подход к грамматике и много живой практики — для учёбы, работы и переезда.</p>
+                <p class="lang-detail__desc">Погрузитесь в немецкий язык — строгий баланс безупречной логики, бессмертной поэзии Гёте, классической музыки и таинственного величия готики. Освойте этот язык, чтобы открыть для себя его истинную глубину!</p>
                 <div class="lang-detail__tags">
                   <span class="lang-detail__tag">Для детей</span>
-                  <span class="lang-detail__tag">Для взрослых</span>
-                  <span class="lang-detail__tag">Бизнес-курс</span>
-                  <span class="lang-detail__tag">Экзамены</span>
+                  <span class="lang-detail__tag">для взрослых</span>
+                  <span class="lang-detail__tag">С нуля</span>
+                  <span class="lang-detail__tag">Goethe-Zertifikat</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -267,17 +290,16 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Hola</div>
                 <h3 class="lang-detail__title">Испанский</h3>
-                <p class="lang-detail__desc">Живой диалог, музыка и страноведение — язык, на котором начинают говорить быстрее всего.</p>
+                <p class="lang-detail__desc">Откройте испанский язык как яркий праздник, где переплелись вкусы паэльи, страсть фламенко, магия корриды и жгучий темперамент. Начните обучение и заговорите на самом эмоциональном языке мира!</p>
                 <div class="lang-detail__tags">
                   <span class="lang-detail__tag">С нуля</span>
-                  <span class="lang-detail__tag">Разговорный</span>
-                  <span class="lang-detail__tag">Страноведение</span>
+                  <span class="lang-detail__tag">разговорный</span>
+                  <span class="lang-detail__tag">для детей и взрослых</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -292,18 +314,16 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">你好</div>
                 <h3 class="lang-detail__title">Китайский</h3>
-                <p class="lang-detail__desc">Иероглифика, тоны и произношение с первого занятия, подготовка к экзамену HSK.</p>
+                <p class="lang-detail__desc">Познакомьтесь с китайским языком как с глубокой гармонией, где сошлись вкус церемониального чая, монументальное величие Великой стены и мудрость каллиграфии. Начните учиться сегодня и откройте для себя новые масштабные возможности!</p>
                 <div class="lang-detail__tags">
+                  <span class="lang-detail__tag">Для детей и взрослых</span>
                   <span class="lang-detail__tag">С нуля</span>
-                  <span class="lang-detail__tag">Иероглифика</span>
                   <span class="lang-detail__tag">HSK</span>
-                  <span class="lang-detail__tag">Разговорный</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 790 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -328,7 +348,6 @@
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 790 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -343,7 +362,7 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Ciao</div>
                 <h3 class="lang-detail__title">Итальянский</h3>
-                <p class="lang-detail__desc">Мелодика речи, грамматика без зубрёжки и свободное общение на бытовые темы.</p>
+                <p class="lang-detail__desc">Почувствуйте итальянский язык как изящный микс, где соединились вкус хрустящей пиццы, величие римской архитектуры и страстные аккорды оперы. Начните обучение и освойте язык, который влюбляет в себя с первого слова!</p>
                 <div class="lang-detail__tags">
                   <span class="lang-detail__tag">С нуля</span>
                   <span class="lang-detail__tag">Разговорный</span>
@@ -353,7 +372,6 @@
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -368,7 +386,7 @@
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Salve</div>
                 <h3 class="lang-detail__title">Латынь</h3>
-                <p class="lang-detail__desc">Грамматическая база европейских языков, медицинская и юридическая терминология, чтение оригиналов.</p>
+                <p class="lang-detail__desc">Исследуйте латынь как вечный фундамент, где собраны древняя философия, первоисточники крылатых афоризмов и шедевры античной литературы. Начните обучение и прикоснитесь к истокам большинства европейских языков!</p>
                 <div class="lang-detail__tags">
                   <span class="lang-detail__tag">С нуля</span>
                   <span class="lang-detail__tag">Терминология</span>
@@ -378,7 +396,6 @@
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 690 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -392,18 +409,16 @@
               </div>
               <div class="lang-detail__copy">
                 <div class="lang-detail__hi">Привет</div>
-                <h3 class="lang-detail__title">Русский как иностранный</h3>
-                <p class="lang-detail__desc">Модульные программы для иностранцев и курс общей грамотности для взрослых.</p>
+                <h3 class="lang-detail__title">Русский язык</h3>
+                <p class="lang-detail__desc">Помогаем понять правила русского языка, исправить школьные оценки и забыть о страхе перед диктантами. Наш курс — это понятная и пошаговая подготовка к ОГЭ и ЕГЭ на максимальный балл.</p>
                 <div class="lang-detail__tags">
-                  <span class="lang-detail__tag">РКИ</span>
-                  <span class="lang-detail__tag">Грамотность</span>
-                  <span class="lang-detail__tag">Индивидуально</span>
+                  <span class="lang-detail__tag">Для школьников</span>
+                  <span class="lang-detail__tag">ВПР ОГЭ ЕГЭ</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 740 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
 
@@ -416,26 +431,97 @@
                 <span class="lang-detail__country">РАННЕЕ РАЗВИТИЕ</span>
               </div>
               <div class="lang-detail__copy">
-                <div class="lang-detail__hi">Привет!</div>
                 <h3 class="lang-detail__title">Подготовка к школе</h3>
-                <p class="lang-detail__desc">«Любопышки», «Почемучка» и «Дошкольник» — развитие, речь и подготовка к школе в игре.</p>
+                <p class="lang-detail__desc">Помогаем будущим первоклассникам мягко адаптироваться к обучению и уверенно пойти в первый класс. Научим ребенка читать, писать, логически мыслить и подготовим к школе без лишнего стресса.</p>
                 <div class="lang-detail__tags">
-                  <span class="lang-detail__tag">Любопышки</span>
-                  <span class="lang-detail__tag">Почемучка</span>
-                  <span class="lang-detail__tag">Дошкольник</span>
+                  <span class="lang-detail__tag">Для дошкольников</span>
                 </div>
               </div>
             </div>
             <div class="lang-detail__bottom">
               <a href="#zayavka" class="btn lang-detail__cta">Записаться</a>
-              <div class="lang-detail__price"><strong>от 590 ₽</strong><br>за занятие 45 минут</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== 4. О НАС ===== -->
+    <!-- ===== 4. ЦЕНЫ ===== -->
+    <section id="prices" class="prices">
+      <div class="section-eyebrow">ЦЕНЫ</div>
+      <h2 class="section-title">Стоимость услуг на 2026–2027 учебный год</h2>
+
+      <div class="prices__grid">
+        <div class="price-card price-card--main tile lift">
+          <div class="price-card__heading">Английский язык для детей</div>
+
+          <div class="price-table">
+            <div class="price-table__col">
+              <div class="price-table__col-title">45 минут</div>
+              <div class="price-card__row">
+                <span class="price-card__label">Группа 3–4 человека, абонемент на 8 занятий</span>
+                <span class="price-card__value">5600 ₽</span>
+              </div>
+              <div class="price-card__row">
+                <span class="price-card__label">В паре, абонемент на 8 занятий</span>
+                <span class="price-card__value">7200 ₽</span>
+              </div>
+              <div class="price-card__row">
+                <span class="price-card__label">Индивидуально</span>
+                <span class="price-card__value">1450 ₽</span>
+              </div>
+            </div>
+            <div class="price-table__col">
+              <div class="price-table__col-title">60 минут</div>
+              <div class="price-card__row">
+                <span class="price-card__label">Группа 3–4 человека, абонемент на 8 занятий</span>
+                <span class="price-card__value price-card__value--pending">уточняется</span>
+              </div>
+              <div class="price-card__row">
+                <span class="price-card__label">В паре, абонемент на 8 занятий</span>
+                <span class="price-card__value price-card__value--pending">уточняется</span>
+              </div>
+              <div class="price-card__row">
+                <span class="price-card__label">Индивидуально</span>
+                <span class="price-card__value price-card__value--pending">уточняется</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Английский язык для подростков и взрослых</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Испанский и немецкий языки</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Китайский и корейский языки</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Итальянский язык и латынь</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Русский язык</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+
+        <div class="price-card tile lift">
+          <div class="price-card__heading">Подготовка к школе</div>
+          <span class="price-card__pending">Уточняется</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. О НАС ===== -->
     <section id="about" class="about">
 
       <div class="section-header"> 
@@ -449,11 +535,28 @@
 
       <div class="about__grid">
         <div class="about-card tile">
-          <h2 class="about-card__title">Учим языкам с 2005 года — так, чтобы на них говорили</h2>
+          <h2 class="about-card__title">Учим языкам с 2005 года, чтобы вы свободно говорили, а не просто знали правила.</h2>
           <p class="about-card__text">
-            Небольшой языковой центр в Зеленограде с командой преподавателей, у каждого из которых профильное
-            педагогическое образование. Свои методики, материалы ведущих издательств и группы, где невозможно
-            отсидеться в углу.
+            Уютный языковой центр в Зеленограде: здесь обучение становится комфортным, а прогресс становится заметным.
+          </p>
+          <p class="about-card__text">
+            Наша команда состоит из опытных и внимательных преподавателей, которые умеют увлечь и детей, и взрослых.
+            Все педагоги имеют профильное образование и знают, как подать материал так, чтобы он легко усваивался.
+            Мы не просто даём знания, мы помогаем преодолеть языковой барьер, вдохновляем и поддерживаем на каждом этапе.
+          </p>
+          <p class="about-card__text">
+            Формат занятий продуман до мелочей: мини-группы до 4 человек или индивидуальные уроки. В группе всегда
+            есть живая практика и динамика, при этом преподаватель успевает поработать с каждым и вовремя
+            скорректировать ошибки. Для детей мы строим обучение через игру и увлекательные истории, а для взрослых —
+            через реалистичные сценарии из жизни и работы.
+          </p>
+          <p class="about-card__text">
+            Наша методика сочетает в себе лучшие мировые практики и собственные разработки. Современные зарубежные
+            учебники дают прочную системную базу, а наши авторские материалы обеспечивают практику, которая работает:
+            адаптированные упражнения, разговорные модули и задания под ваши реальные цели.
+          </p>
+          <p class="about-card__text">
+            Хотите убедиться, что учиться можно интересно и эффективно? Запишитесь на бесплатное первое занятие!
           </p>
 
           <div class="about-stats">
@@ -466,8 +569,16 @@
               <div class="about-stat__label">выпускников<br>центра</div>
             </div>
             <div class="about-stat">
-              <div class="about-stat__value">3–99</div>
+              <div class="about-stat__value">5+</div>
               <div class="about-stat__label">лет — учим<br>в любом возрасте</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__value">50%</div>
+              <div class="about-stat__label">учеников приходят<br>к нам по рекомендации</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__value">95%</div>
+              <div class="about-stat__label">учеников достигают<br>желаемого результата</div>
             </div>
           </div>
         </div>
@@ -490,22 +601,22 @@
         <div class="principle-card tile lift">
           <div class="principle-card__num">01</div>
           <div>
-            <div class="principle-card__title">Группы 2–4 человека</div>
+            <div class="principle-card__title">Мини-группы до 4 человек</div>
             <div class="principle-card__desc">Каждый говорит на каждом занятии, а не отсиживается в углу.</div>
           </div>
         </div>
         <div class="principle-card tile lift">
           <div class="principle-card__num">02</div>
           <div>
-            <div class="principle-card__title">Низкие цены</div>
-            <div class="principle-card__desc">От 640 р. за занятие - цены доступные каждому.</div>
+            <div class="principle-card__title">Разумные цены</div>
+            <div class="principle-card__desc">От 700 р. за занятие — цены доступные каждому.</div>
           </div>
         </div>
         <div class="principle-card tile lift">
           <div class="principle-card__num">03</div>
           <div>
-            <div class="principle-card__title">Свои методики</div>
-            <div class="principle-card__desc">Авторские программы и материалы ведущих мировых издательств.</div>
+            <div class="principle-card__title">Современные учебники</div>
+            <div class="principle-card__desc">От ведущих издательств и авторские материалы.</div>
           </div>
         </div>
         <div class="principle-card tile lift">
@@ -518,7 +629,7 @@
       </div>
     </section>
 
-    <!-- ===== 5. ОТЗЫВЫ ===== -->
+    <!-- ===== 6. ОТЗЫВЫ ===== -->
     <section id="reviews" class="reviews">
       <div class="section-header">
         <div>
@@ -599,10 +710,10 @@
       </div>
     </section>
 
-    <!-- ===== 6. FAQ ===== -->
+    <!-- ===== 7. FAQ ===== -->
     <section id="faq" class="faq">
       <div class="section-eyebrow">ВОПРОСЫ</div>
-      <h2 class="section-title">Частые вопросы</h2>
+      <h2 class="section-title">Часто задаваемые вопросы</h2>
 
       <div class="faq__columns">
         <div class="faq__column" id="faqColumnLeft">
@@ -659,14 +770,14 @@
               <span class="faq-item__icon">+</span>
             </div>
             <div class="faq-item__answer">
-              <p>Зеленоград, корпус 1432, н.п. 6. Телефон +7 (985) 742-95-21, почта info@know-school.ru. Набор в группы идёт круглый год.</p>
+              <p>Москва, Зеленоград, 14 мкр, корпус 1432, н.п. 6А. Телефон +7 (985) 742-95-21, почта info@know-school.ru. Набор в группы идёт круглый год.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== 7. КОНТАКТЫ И ЗАЯВКА ===== -->
+    <!-- ===== 8. КОНТАКТЫ И ЗАЯВКА ===== -->
     <section id="zayavka" class="contact">
       <div class="section-eyebrow">КОНТАКТЫ</div>
       <h2 class="section-title">Запишитесь на бесплатное занятие</h2>
@@ -678,8 +789,8 @@
             class="contact-map__iframe" loading="lazy" allowfullscreen></iframe>
 
           <div class="contact-map__card">
-            <div class="contact-map__title">Зеленоград, корпус 1432, н.п. 6</div>
-            <div class="contact-map__sub">5 минут пешком от станции Крюково. Вход со стороны двора.</div>
+            <div class="contact-map__title">Москва, Зеленоград, 14 мкр, корпус 1432, н.п. 6А</div>
+            <div class="contact-map__sub">15 минут пешком от станции Крюково. Вход со стороны внешнего угла дома.</div>
 
             <div class="contact-map__details">
               <div>
@@ -718,7 +829,7 @@
                 <option>Испанский язык</option>
                 <option>Итальянский язык</option>
                 <option>Китайский язык</option>
-                <option>Русский как иностранный</option>
+                <option>Русский язык</option>
                 <option>Для детей 3–7 лет</option>
               </select>
 
@@ -761,6 +872,7 @@
         <nav class="footer-nav">
           <a href="#programs">Языки</a>
           <a href="#promo">Акции</a>
+          <a href="#prices">Цены</a>
           <a href="#about">О нас</a>
           <a href="#reviews">Отзывы</a>
           <a href="#faq">FAQ</a>
@@ -781,7 +893,7 @@
         <div class="footer-contacts">
           <a href="tel:+79857429521" class="footer-contacts__phone">+7 (985) 742-95-21</a>
           <a href="mailto:info@know-school.ru" class="footer-contacts__email">info@know-school.ru</a>
-          <div class="footer-contacts__address">Зеленоград, корпус 1432, н.п. 6<br>Пн–Сб, 9:00–21:00</div>
+          <div class="footer-contacts__address">Москва, Зеленоград, 14 мкр, корпус 1432, н.п. 6А<br>Пн–Сб, 9:00–21:00</div>
           <a href="#zayavka" class="btn footer-contacts__cta">Записаться</a>
         </div>
       </div>
