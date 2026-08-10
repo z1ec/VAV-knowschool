@@ -73,6 +73,28 @@ function initFaq() {
 }
 
 /* =========================================================
+   Отзывы
+   ========================================================= */
+
+function initReviewToggles() {
+  document.querySelectorAll('.review-card').forEach((card) => {
+    const text = card.querySelector('.review-card__text');
+    const toggle = card.querySelector('.review-card__toggle');
+    if (!text || !toggle) return;
+
+    if (text.scrollHeight <= text.clientHeight + 1) {
+      toggle.remove();
+      return;
+    }
+
+    toggle.addEventListener('click', () => {
+      const expanded = text.classList.toggle('is-expanded');
+      toggle.textContent = expanded ? 'Свернуть' : 'Читать полностью';
+    });
+  });
+}
+
+/* =========================================================
    Форма заявки
    ========================================================= */
 
@@ -115,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initLanguagePicker();
   initFaq();
+  initReviewToggles();
   initContactForm();
   initCookieBanner();
 });
