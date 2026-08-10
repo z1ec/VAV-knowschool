@@ -1863,6 +1863,25 @@ section[id] {
   .contact__grid {
     grid-template-columns: 1fr !important;
   }
+
+  .contact-map {
+    min-height: auto;
+  }
+
+  .contact-map__iframe {
+    position: relative;
+    inset: auto;
+    height: 260px;
+  }
+
+  .contact-map__card {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 /* ---------- Футер ---------- */
