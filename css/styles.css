@@ -1089,6 +1089,8 @@ section[id] {
 }
 
 .price-card {
+  position: relative;
+  overflow: hidden;
   background: #fff;
   border-radius: 22px;
   padding: 26px;
@@ -1096,6 +1098,20 @@ section[id] {
   flex-direction: column;
   gap: 14px;
   min-height: 150px;
+}
+
+.price-card__blob {
+  position: absolute;
+  top: var(--blob-top, auto);
+  right: var(--blob-right, auto);
+  bottom: var(--blob-bottom, auto);
+  left: var(--blob-left, auto);
+  width: var(--blob-size, 150px);
+  height: var(--blob-size, 150px);
+  border-radius: 50%;
+  background: var(--price-accent, var(--color-primary));
+  opacity: .14;
+  pointer-events: none;
 }
 
 .price-card__heading {
