@@ -772,21 +772,21 @@ section[id] {
 }
 
 .promo-card--friend {
-  background: linear-gradient(150deg, #ffd25e, #ffdf89);
+  background: #fff;
+  border: 1px solid #e4ebf5;
   border-radius: 24px;
   padding: 26px;
-  color: var(--color-accent-dark);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 14px;
   min-height: 150px;
 }
 
-.promo-card--friend .promo-card__sub {
-  color: #6e5710;
+.promo-card--friend .promo-card__icon {
+  color: var(--color-primary);
 }
 
-.promo-card--yearround,
 .promo-card--referral {
   background: #fff;
   border: 1px solid #e4ebf5;
@@ -798,9 +798,48 @@ section[id] {
   min-height: 150px;
 }
 
-.promo-card--yearround .promo-card__icon,
 .promo-card--referral .promo-card__icon {
   color: var(--color-primary);
+}
+
+.promo-card--yearround {
+  background: linear-gradient(150deg, #ffd25e, #ffdf89);
+  border-radius: 24px;
+  padding: 0;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-height: 150px;
+  text-align: center;
+}
+
+.promo-card--yearround .promo-card__heading {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  font-size: 17px;
+}
+
+.promo-card__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.promo-card__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 140%, rgba(58, 44, 0, .75), rgba(58, 44, 0, 0) 65%);
+  pointer-events: none;
 }
 
 .promo-card__icon {
