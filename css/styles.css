@@ -1321,15 +1321,21 @@ section[id] {
 
 .about-card__body {
   columns: 2;
-  column-gap: 48px;
+  column-gap: 56px;
   margin-top: 4px;
 }
 
 .about-card__text {
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   font-size: clamp(15px, 1.5vw, 17px);
-  line-height: 1.6;
+  line-height: 1.75;
   color: var(--color-text-muted);
+  break-inside: avoid;
+}
+
+.about-card__mark {
+  color: var(--color-text);
+  font-weight: 800;
 }
 
 .about-stats {
@@ -1395,6 +1401,11 @@ section[id] {
 @media (max-width: 860px) {
   .about-card__body {
     columns: 1;
+  }
+
+  .about-card__text {
+    line-height: 1.7;
+    margin-bottom: 20px;
   }
 
   .principles {
