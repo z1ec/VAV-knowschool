@@ -20,22 +20,18 @@ class Lead(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
 
-class PriceCard(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    key = db.Column(db.String(40), unique=True, nullable=False)
-    title = db.Column(db.String(120), nullable=False)
-    is_main = db.Column(db.Boolean, default=False, nullable=False)
-    sort_order = db.Column(db.Integer, default=0, nullable=False)
-    rows = db.relationship(
-        "PriceRow", backref="card", order_by="PriceRow.sort_order", cascade="all, delete-orphan"
-    )
-
-
 class PriceRow(db.Model):
+    """Editable price for a hardcoded catalog row (see PRICE_CATALOG in app.py).
+
+    Titles and labels live in code, not here, so they can never drift from
+    what's actually shown on the site. Only the admin-editable value and
+    pending flag are persisted, keyed to the catalog row they belong to.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
-    card_id = db.Column(db.Integer, db.ForeignKey("price_card.id"), nullable=False)
-    duration_label = db.Column(db.String(40))
-    format_label = db.Column(db.String(160))
+    card_key = db.Column(db.String(40), nullable=False)
+    row_index = db.Column(db.Integer, nullable=False)
     value_rub = db.Column(db.Integer)
     is_pending = db.Column(db.Boolean, default=True, nullable=False)
-    sort_order = db.Column(db.Integer, default=0, nullable=False)
+
+    __table_args__ = (db.UniqueConstraint("card_key", "row_index", name="uq_price_row_card_index"),)

@@ -6,7 +6,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_wtf import CSRFProtect
-from sqlalchemy import event, text
+from sqlalchemy import event, inspect, text
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import IntegrityError
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -15,7 +15,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from captcha import verify_captcha
 from forms import ContactForm, LoginForm
 from mail import send_lead_email
-from models import Lead, PriceCard, PriceRow, User, db
+from models import Lead, PriceRow, User, db
 from prices_style import style_attr
 
 app = Flask(__name__, instance_relative_config=True)
@@ -53,7 +53,18 @@ def load_user(user_id):
     return db.session.get(User, int(user_id))
 
 
+def migrate_legacy_price_tables():
+    """Drop the old PriceCard/PriceRow tables from before card/row labels
+    moved out of the database. Safe to run every boot: it only fires once,
+    the first time it finds the retired price_card table."""
+    if "price_card" in inspect(db.engine).get_table_names():
+        with db.engine.begin() as conn:
+            conn.execute(text("DROP TABLE IF EXISTS price_row"))
+            conn.execute(text("DROP TABLE IF EXISTS price_card"))
+
+
 def bootstrap():
+    migrate_legacy_price_tables()
     db.create_all()
     if User.query.count() == 0:
         try:
@@ -67,83 +78,128 @@ def bootstrap():
             db.session.rollback()
 
 
-SIMPLE_PRICE_CARDS = [
-    ("english-teens-adults", "Английский язык для взрослых", [
-        ("60 минут", "В паре, абонемент на 8 занятий", 7840),
-        ("60 минут", "Индивидуально", 1850),
-    ]),
-    ("spanish-german", "Испанский и немецкий языки", [
-        ("60 минут", "В паре, абонемент на 8 занятий", 8000),
-        ("60 минут", "Индивидуально", 1850),
-    ]),
-    ("chinese-korean", "Китайский и корейский языки", [
-        ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 7840),
-        ("60 минут", "В паре, абонемент на 8 занятий", 9600),
-        ("60 минут", "Индивидуально", 2100),
-    ]),
-    ("italian-latin", "Итальянский язык и латынь", [
-        ("60 минут", "Индивидуально (занятия онлайн)", 2200),
-    ]),
-    ("russian", "Русский язык", [
-        ("60 минут", "Индивидуальные занятия", 1850),
-    ]),
-    ("school-prep", "Подготовка к ОГЭ и ЕГЭ по английскому", [
-        ("90 минут", "Группа 3–4 человека, абонемент на 8 занятий", 11200),
-        ("90 минут", "В паре, абонемент на 8 занятий", 13200),
-        ("60 минут", "Индивидуально", 14800),
-    ]),
+# Card/row titles and labels are hardcoded here rather than in the database,
+# since nothing edits them at runtime — only value_rub/is_pending are
+# admin-editable and actually belong in PriceRow.
+PRICE_CATALOG = [
+    {
+        "key": "english-kids",
+        "title": "Английский язык для детей и подростков",
+        "is_main": True,
+        "rows": [
+            ("45 минут", "Группа 3–4 человека, абонемент на 8 занятий", 5600, False),
+            ("45 минут", "В паре, абонемент на 8 занятий", 7200, False),
+            ("45 минут", "Индивидуально", 1500, False),
+            ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 6800, False),
+            ("60 минут", "В паре, абонемент на 8 занятий", 7840, False),
+            ("60 минут", "Индивидуально", 1850, False),
+        ],
+    },
+    {
+        "key": "english-teens-adults",
+        "title": "Английский язык для взрослых",
+        "is_main": False,
+        "rows": [
+            ("60 минут", "В паре, абонемент на 8 занятий", 7840, False),
+            ("60 минут", "Индивидуально", 1850, False),
+        ],
+    },
+    {
+        "key": "spanish-german",
+        "title": "Испанский и немецкий языки",
+        "is_main": False,
+        "rows": [
+            ("60 минут", "В паре, абонемент на 8 занятий", 8000, False),
+            ("60 минут", "Индивидуально", 1850, False),
+        ],
+    },
+    {
+        "key": "chinese-korean",
+        "title": "Китайский и корейский языки",
+        "is_main": False,
+        "rows": [
+            ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 7840, False),
+            ("60 минут", "В паре, абонемент на 8 занятий", 9600, False),
+            ("60 минут", "Индивидуально", 2100, False),
+        ],
+    },
+    {
+        "key": "italian-latin",
+        "title": "Итальянский язык и латынь",
+        "is_main": False,
+        "rows": [
+            ("60 минут", "Индивидуально (занятия онлайн)", 2200, False),
+        ],
+    },
+    {
+        "key": "russian",
+        "title": "Русский язык",
+        "is_main": False,
+        "rows": [
+            ("60 минут", "Индивидуальные занятия", 1850, False),
+        ],
+    },
+    {
+        "key": "school-prep",
+        "title": "Подготовка к ОГЭ и ЕГЭ по английскому",
+        "is_main": False,
+        "rows": [
+            ("90 минут", "Группа 3–4 человека, абонемент на 8 занятий", 11200, False),
+            ("90 минут", "В паре, абонемент на 8 занятий", 13200, False),
+            ("60 минут", "Индивидуально", 14800, False),
+        ],
+    },
 ]
 
-MAIN_PRICE_CARD_ROWS = [
-    ("45 минут", "Группа 3–4 человека, абонемент на 8 занятий", 5600, False),
-    ("45 минут", "В паре, абонемент на 8 занятий", 7200, False),
-    ("45 минут", "Индивидуально", 1500, False),
-    ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 6800, False),
-    ("60 минут", "В паре, абонемент на 8 занятий", 7840, False),
-    ("60 минут", "Индивидуально", 1850, False),
-]
 
-
-def seed_prices():
-    if PriceCard.query.count() > 0:
-        return
-
-    main_card = PriceCard(key="english-kids", title="Английский язык для детей и подростков", is_main=True, sort_order=0)
-    for i, (duration, fmt, value, pending) in enumerate(MAIN_PRICE_CARD_ROWS):
-        main_card.rows.append(
-            PriceRow(duration_label=duration, format_label=fmt, value_rub=value, is_pending=pending, sort_order=i)
-        )
-    db.session.add(main_card)
-
-    for order, (key, title, rows) in enumerate(SIMPLE_PRICE_CARDS, start=1):
-        card = PriceCard(key=key, title=title, is_main=False, sort_order=order)
-        for i, (duration, fmt, value) in enumerate(rows):
-            card.rows.append(
-                PriceRow(duration_label=duration, format_label=fmt, value_rub=value, is_pending=False, sort_order=i)
-            )
-        db.session.add(card)
-
-    try:
-        db.session.commit()
-    except IntegrityError:
-        db.session.rollback()
+def sync_prices():
+    """Insert a PriceRow for any catalog row that doesn't have one yet.
+    Never touches existing rows, so admin-edited prices survive restarts
+    and code changes to PRICE_CATALOG."""
+    existing = {(r.card_key, r.row_index) for r in PriceRow.query.all()}
+    for card in PRICE_CATALOG:
+        for i, (_duration, _fmt, value, pending) in enumerate(card["rows"]):
+            if (card["key"], i) not in existing:
+                db.session.add(PriceRow(card_key=card["key"], row_index=i, value_rub=value, is_pending=pending))
+    db.session.commit()
 
 
 with app.app_context():
     bootstrap()
-    seed_prices()
+    sync_prices()
+
+
+def _price_cards_for_display():
+    price_rows = {(r.card_key, r.row_index): r for r in PriceRow.query.all()}
+    cards = []
+    for card in PRICE_CATALOG:
+        rows = []
+        groups = {}
+        for i, (duration, fmt, _value, _pending) in enumerate(card["rows"]):
+            db_row = price_rows.get((card["key"], i))
+            row = {
+                "id": db_row.id if db_row else None,
+                "duration_label": duration,
+                "format_label": fmt,
+                "value_rub": db_row.value_rub if db_row else None,
+                "is_pending": db_row.is_pending if db_row else True,
+            }
+            rows.append(row)
+            groups.setdefault(duration, []).append(row)
+        cards.append({
+            "key": card["key"],
+            "title": card["title"],
+            "is_main": card["is_main"],
+            "style_attr": style_attr(card["key"]),
+            "rows": rows,
+            "duration_groups": groups,
+        })
+    return cards
 
 
 @app.route("/")
 def index():
-    cards = PriceCard.query.order_by(PriceCard.sort_order).all()
-    for card in cards:
-        card.style_attr = style_attr(card.key)
-        groups = {}
-        for row in card.rows:
-            groups.setdefault(row.duration_label, []).append(row)
-        card.duration_groups = groups
-    return render_template("index.html", price_cards=cards)
+    return render_template("index.html", price_cards=_price_cards_for_display())
 
 
 @app.route("/svedeniya.html")
@@ -240,8 +296,7 @@ def admin_prices():
         flash("Цены обновлены", "success")
         return redirect(url_for("admin_prices"))
 
-    cards = PriceCard.query.order_by(PriceCard.sort_order).all()
-    return render_template("admin/prices.html", cards=cards)
+    return render_template("admin/prices.html", cards=_price_cards_for_display())
 
 
 @app.route("/admin/logout", methods=["POST"])
