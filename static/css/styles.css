@@ -2353,3 +2353,146 @@ section[id] {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* ---------- Юридические документы ---------- */
+
+.legal-page {
+  margin: 0 0 80px;
+  background: #fff;
+  border: 1px solid #e8eef7;
+  border-radius: 24px;
+  padding: clamp(22px, 4vw, 40px);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.legal-page__updated {
+  margin: 0 0 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-faint);
+}
+
+.legal-page p {
+  margin: 0 0 14px;
+}
+
+.legal-page__intro {
+  color: var(--color-text-light);
+}
+
+.legal-page h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.legal-page__requisites {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-page__requisites li {
+  margin-bottom: 4px;
+}
+
+.legal-list {
+  counter-reset: legal-item;
+  list-style: none;
+  margin: 0 0 16px;
+  padding-left: 0;
+}
+
+.legal-list .legal-list {
+  margin: 10px 0 14px;
+}
+
+.legal-list > li {
+  counter-increment: legal-item;
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 12px;
+}
+
+.legal-list > li::before {
+  content: counters(legal-item, ".") ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.legal-list--plain {
+  counter-reset: none;
+  padding-left: 22px;
+}
+
+.legal-list--plain > li {
+  counter-increment: none;
+  padding-left: 0;
+  list-style: disc;
+}
+
+.legal-list--plain > li::before {
+  content: none;
+}
+
+.legal-list__title {
+  display: block;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4px 0 16px;
+}
+
+.legal-table th,
+.legal-table td {
+  border: 1px solid #e8eef7;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.legal-table th {
+  background: #f4f7fc;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.legal-page__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 14px 26px;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.legal-page__download:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .legal-list > li {
+    padding-left: 40px;
+  }
+
+  .legal-list--plain {
+    padding-left: 18px;
+  }
+
+  .legal-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

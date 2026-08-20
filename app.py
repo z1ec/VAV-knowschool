@@ -242,6 +242,21 @@ def svedeniya():
     return render_template("svedeniya.html")
 
 
+@app.route("/privacy-policy.html")
+def privacy_policy():
+    return render_template("privacy-policy.html")
+
+
+@app.route("/consent-data-processing.html")
+def consent_data_processing():
+    return render_template("consent-data-processing.html")
+
+
+@app.route("/cookie-policy.html")
+def cookie_policy():
+    return render_template("cookie-policy.html")
+
+
 @app.errorhandler(404)
 def not_found(_error):
     return render_template("404.html"), 404
