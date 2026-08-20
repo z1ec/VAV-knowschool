@@ -161,8 +161,8 @@
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="8" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/girl.png') }}" alt="" loading="lazy">
-            <span class="lang-list__title">Подготовка к школе</span>
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+            <span class="lang-list__title">Подготовка к ОГЭ и ЕГЭ по английскому</span>
             <span class="lang-list__arrow">→</span>
           </button>
         </div>
@@ -366,14 +366,15 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/girl.png') }}" alt="" loading="lazy">
-                <span class="lang-detail__country">РАННЕЕ РАЗВИТИЕ</span>
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+                <span class="lang-detail__country">ЭКЗАМЕНЫ</span>
               </div>
               <div class="lang-detail__copy">
-                <h3 class="lang-detail__title">Подготовка к школе</h3>
-                <p class="lang-detail__desc">Помогаем будущим первоклассникам мягко адаптироваться к обучению и уверенно пойти в первый класс. Научим ребенка читать, писать, логически мыслить и подготовим к школе без лишнего стресса.</p>
+                <h3 class="lang-detail__title">Подготовка к ОГЭ и ЕГЭ по английскому</h3>
+                <p class="lang-detail__desc">Готовим к ОГЭ и ЕГЭ по английскому языку: разбираем формат экзамена, тренируем аудирование, чтение, письмо и говорение, набираем уверенность и высокий балл.</p>
                 <div class="lang-detail__tags">
-                  <span class="lang-detail__tag">Для дошкольников</span>
+                  <span class="lang-detail__tag">Для школьников</span>
+                  <span class="lang-detail__tag">ОГЭ ЕГЭ</span>
                 </div>
               </div>
             </div>
@@ -418,11 +419,23 @@
             <div class="price-card tile lift" style="{{ card.style_attr }}">
               <div class="price-card__blob"></div>
               <div class="price-card__heading">{{ card.title }}</div>
-              {% if card.rows and not card.rows[0].is_pending and card.rows[0].value_rub is not none %}
-                <span class="price-card__pending price-card__pending--known">{{ card.rows[0].value_rub }} ₽</span>
-              {% else %}
-                <span class="price-card__pending">Уточняется</span>
-              {% endif %}
+              <div class="price-card__list">
+                {% for duration, rows in card.duration_groups.items() %}
+                  <div class="price-card__group">
+                    <div class="price-card__group-title">{{ duration }}</div>
+                    {% for row in rows %}
+                      <div class="price-card__item">
+                        <span class="price-card__item-label">{{ row.format_label }}</span>
+                        {% if row.is_pending or row.value_rub is none %}
+                          <span class="price-card__item-value price-card__item-value--pending">уточняется</span>
+                        {% else %}
+                          <span class="price-card__item-value">{{ row.value_rub }} ₽</span>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </div>
             </div>
           {% endif %}
         {% endfor %}
@@ -762,11 +775,11 @@
               </div>
               <div>
                 <div class="contact-map__label">ПОЧТА</div>
-                <a href="mailto:info@know-school.ru" class="contact-map__value">info@know-school.ru</a>
+                <a href="mailto:nowschool@yandex.ru" class="contact-map__value">nowschool@yandex.ru</a>
               </div>
               <div>
                 <div class="contact-map__label">ГРАФИК</div>
-                <div class="contact-map__value contact-map__value--static">Пн–Сб, 9:00–21:00</div>
+                <div class="contact-map__value contact-map__value--static">Пн–Сб, 12:00–21:00</div>
               </div>
             </div>
           </div>
@@ -778,7 +791,7 @@
 
           <div class="contact-form-card__body">
             <div class="contact-form-card__title">Оставьте заявку</div>
-            <p class="contact-form-card__text">Администратор перезвонит в течение рабочего дня с 12 до 20, ответит на вопросы и
+            <p class="contact-form-card__text">Администратор перезвонит в течение рабочего дня с 12 до 21, ответит на вопросы и
               подберёт удобное время.</p>
 
             <form class="contact-form" id="contactForm" novalidate>
@@ -797,7 +810,7 @@
                 <option>Итальянский язык</option>
                 <option>Латынь</option>
                 <option>Русский язык</option>
-                <option>Подготовка к школе</option>
+                <option>Подготовка к ОГЭ и ЕГЭ по английскому</option>
               </select>
 
               <div class="contact-form__captcha">

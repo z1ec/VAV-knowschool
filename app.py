@@ -68,21 +68,39 @@ def bootstrap():
 
 
 SIMPLE_PRICE_CARDS = [
-    ("english-teens-adults", "Английский язык для подростков и взрослых"),
-    ("spanish-german", "Испанский и немецкий языки"),
-    ("chinese-korean", "Китайский и корейский языки"),
-    ("italian-latin", "Итальянский язык и латынь"),
-    ("russian", "Русский язык"),
-    ("school-prep", "Подготовка к школе"),
+    ("english-teens-adults", "Английский язык для взрослых", [
+        ("60 минут", "В паре, абонемент на 8 занятий", 7840),
+        ("60 минут", "Индивидуально", 1850),
+    ]),
+    ("spanish-german", "Испанский и немецкий языки", [
+        ("60 минут", "В паре, абонемент на 8 занятий", 8000),
+        ("60 минут", "Индивидуально", 1850),
+    ]),
+    ("chinese-korean", "Китайский и корейский языки", [
+        ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 7840),
+        ("60 минут", "В паре, абонемент на 8 занятий", 9600),
+        ("60 минут", "Индивидуально", 2100),
+    ]),
+    ("italian-latin", "Итальянский язык и латынь", [
+        ("60 минут", "Индивидуально (занятия онлайн)", 2200),
+    ]),
+    ("russian", "Русский язык", [
+        ("60 минут", "Индивидуальные занятия", 1850),
+    ]),
+    ("school-prep", "Подготовка к ОГЭ и ЕГЭ по английскому", [
+        ("90 минут", "Группа 3–4 человека, абонемент на 8 занятий", 11200),
+        ("90 минут", "В паре, абонемент на 8 занятий", 13200),
+        ("60 минут", "Индивидуально", 14800),
+    ]),
 ]
 
 MAIN_PRICE_CARD_ROWS = [
     ("45 минут", "Группа 3–4 человека, абонемент на 8 занятий", 5600, False),
     ("45 минут", "В паре, абонемент на 8 занятий", 7200, False),
-    ("45 минут", "Индивидуально", 1450, False),
-    ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", None, True),
-    ("60 минут", "В паре, абонемент на 8 занятий", None, True),
-    ("60 минут", "Индивидуально", None, True),
+    ("45 минут", "Индивидуально", 1500, False),
+    ("60 минут", "Группа 3–4 человека, абонемент на 8 занятий", 6800, False),
+    ("60 минут", "В паре, абонемент на 8 занятий", 7840, False),
+    ("60 минут", "Индивидуально", 1850, False),
 ]
 
 
@@ -90,16 +108,19 @@ def seed_prices():
     if PriceCard.query.count() > 0:
         return
 
-    main_card = PriceCard(key="english-kids", title="Английский язык для детей", is_main=True, sort_order=0)
+    main_card = PriceCard(key="english-kids", title="Английский язык для детей и подростков", is_main=True, sort_order=0)
     for i, (duration, fmt, value, pending) in enumerate(MAIN_PRICE_CARD_ROWS):
         main_card.rows.append(
             PriceRow(duration_label=duration, format_label=fmt, value_rub=value, is_pending=pending, sort_order=i)
         )
     db.session.add(main_card)
 
-    for order, (key, title) in enumerate(SIMPLE_PRICE_CARDS, start=1):
+    for order, (key, title, rows) in enumerate(SIMPLE_PRICE_CARDS, start=1):
         card = PriceCard(key=key, title=title, is_main=False, sort_order=order)
-        card.rows.append(PriceRow(is_pending=True, sort_order=0))
+        for i, (duration, fmt, value) in enumerate(rows):
+            card.rows.append(
+                PriceRow(duration_label=duration, format_label=fmt, value_rub=value, is_pending=False, sort_order=i)
+            )
         db.session.add(card)
 
     try:
@@ -118,11 +139,10 @@ def index():
     cards = PriceCard.query.order_by(PriceCard.sort_order).all()
     for card in cards:
         card.style_attr = style_attr(card.key)
-        if card.is_main:
-            groups = {}
-            for row in card.rows:
-                groups.setdefault(row.duration_label, []).append(row)
-            card.duration_groups = groups
+        groups = {}
+        for row in card.rows:
+            groups.setdefault(row.duration_label, []).append(row)
+        card.duration_groups = groups
     return render_template("index.html", price_cards=cards)
 
 

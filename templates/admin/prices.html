@@ -13,10 +13,8 @@
       <table class="admin-table">
         <thead>
           <tr>
-            {% if card.is_main %}
-              <th>Длительность</th>
-              <th>Формат</th>
-            {% endif %}
+            <th>Длительность</th>
+            <th>Формат</th>
             <th>Цена, ₽</th>
             <th>Уточняется</th>
           </tr>
@@ -24,10 +22,8 @@
         <tbody>
           {% for row in card.rows %}
             <tr>
-              {% if card.is_main %}
-                <td>{{ row.duration_label }}</td>
-                <td>{{ row.format_label }}</td>
-              {% endif %}
+              <td>{{ row.duration_label }}</td>
+              <td>{{ row.format_label }}</td>
               <td>
                 <input type="number" min="0" step="1" name="row_{{ row.id }}_value"
                        value="{{ row.value_rub if row.value_rub is not none else '' }}">
