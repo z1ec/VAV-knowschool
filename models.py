@@ -18,6 +18,7 @@ class Lead(db.Model):
     course = db.Column(db.String(64), nullable=False)
     ip_address = db.Column(db.String(45))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    email_error = db.Column(db.Text)
 
 
 class PriceRow(db.Model):

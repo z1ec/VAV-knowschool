@@ -20,6 +20,7 @@
         <span class="admin-nav__brand">Хочу всё знать — админка</span>
         <nav class="admin-nav__links">
           <a href="{{ url_for('admin_dashboard') }}">Дашборд</a>
+          <a href="{{ url_for('admin_leads') }}">Заявки</a>
           <a href="{{ url_for('admin_prices') }}">Цены</a>
           <form method="post" action="{{ url_for('admin_logout') }}" class="admin-nav__logout">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

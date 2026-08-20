@@ -2007,26 +2007,9 @@ section[id] {
 
 .contact-form__captcha {
   grid-column: span 2;
-  background: rgba(255, 255, 255, .06);
-  border: 1px dashed rgba(255, 255, 255, .22);
-  border-radius: 12px;
-  height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-}
-
-.contact-form__captcha-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, .16);
-}
-
-.contact-form__captcha-text {
-  font-size: 12.5px;
-  color: #8ba3c4;
 }
 
 .contact-form__consent {

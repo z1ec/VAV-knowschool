@@ -1,3 +1,4 @@
+import logging
 import os
 from datetime import timedelta
 
@@ -17,6 +18,8 @@ from forms import ContactForm, LoginForm
 from mail import send_lead_email
 from models import Lead, PriceRow, User, db
 from prices_style import style_attr
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__, instance_relative_config=True)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_for=1)
@@ -63,8 +66,22 @@ def migrate_legacy_price_tables():
             conn.execute(text("DROP TABLE IF EXISTS price_card"))
 
 
+def migrate_lead_email_error_column():
+    """Add the email_error column to lead tables created before it existed.
+    Safe to run every boot: it only fires once, the first time it finds
+    a lead table missing the column."""
+    inspector = inspect(db.engine)
+    if "lead" not in inspector.get_table_names():
+        return
+    columns = {c["name"] for c in inspector.get_columns("lead")}
+    if "email_error" not in columns:
+        with db.engine.begin() as conn:
+            conn.execute(text("ALTER TABLE lead ADD COLUMN email_error TEXT"))
+
+
 def bootstrap():
     migrate_legacy_price_tables()
+    migrate_lead_email_error_column()
     db.create_all()
     if User.query.count() == 0:
         try:
@@ -199,7 +216,11 @@ def _price_cards_for_display():
 
 @app.route("/")
 def index():
-    return render_template("index.html", price_cards=_price_cards_for_display())
+    return render_template(
+        "index.html",
+        price_cards=_price_cards_for_display(),
+        captcha_client_key=os.environ.get("CAPTCHA_CLIENT_KEY", ""),
+    )
 
 
 @app.route("/svedeniya.html")
@@ -253,7 +274,8 @@ def api_contact():
     db.session.add(lead)
     db.session.commit()
 
-    send_lead_email(lead)
+    lead.email_error = send_lead_email(lead)
+    db.session.commit()
 
     return jsonify(ok=True)
 
@@ -282,6 +304,13 @@ def admin_login():
 @login_required
 def admin_dashboard():
     return render_template("admin/dashboard.html")
+
+
+@app.route("/admin/leads")
+@login_required
+def admin_leads():
+    leads = Lead.query.order_by(Lead.created_at.desc()).all()
+    return render_template("admin/leads.html", leads=leads)
 
 
 @app.route("/admin/prices", methods=["GET", "POST"])

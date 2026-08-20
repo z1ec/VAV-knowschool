@@ -818,8 +818,7 @@
               </select>
 
               <div class="contact-form__captcha">
-                <span class="contact-form__captcha-icon"></span>
-                <span class="contact-form__captcha-text">SmartCaptcha от Яндекса</span>
+                <div class="smart-captcha" data-sitekey="{{ captcha_client_key }}" data-hl="ru"></div>
               </div>
 
               <label class="contact-form__consent">
@@ -838,6 +837,10 @@
     </section>
 
   </main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
 {% endblock %}
 
 {% block after_footer %}
