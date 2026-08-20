@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block title %}Админ-панель — Хочу всё знать{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body class="admin">
+  {% if current_user.is_authenticated %}
+    <header class="admin-nav">
+      <div class="admin-nav__inner">
+        <span class="admin-nav__brand">Хочу всё знать — админка</span>
+        <nav class="admin-nav__links">
+          <a href="{{ url_for('admin_dashboard') }}">Дашборд</a>
+          <a href="{{ url_for('admin_prices') }}">Цены</a>
+          <form method="post" action="{{ url_for('admin_logout') }}" class="admin-nav__logout">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit">Выйти</button>
+          </form>
+        </nav>
+      </div>
+    </header>
+  {% endif %}
+
+  <main class="admin-content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="admin-flashes">
+          {% for category, message in messages %}
+            <div class="admin-flash admin-flash--{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+
+</html>

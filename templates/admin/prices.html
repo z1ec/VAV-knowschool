@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Цены — Хочу всё знать{% endblock %}
+
+{% block content %}
+  <h1>Цены</h1>
+
+  <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    {% for card in cards %}
+      <h2>{{ card.title }}</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            {% if card.is_main %}
+              <th>Длительность</th>
+              <th>Формат</th>
+            {% endif %}
+            <th>Цена, ₽</th>
+            <th>Уточняется</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in card.rows %}
+            <tr>
+              {% if card.is_main %}
+                <td>{{ row.duration_label }}</td>
+                <td>{{ row.format_label }}</td>
+              {% endif %}
+              <td>
+                <input type="number" min="0" step="1" name="row_{{ row.id }}_value"
+                       value="{{ row.value_rub if row.value_rub is not none else '' }}">
+              </td>
+              <td>
+                <input type="checkbox" name="row_{{ row.id }}_pending" {{ "checked" if row.is_pending }}>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+
+    <p><button type="submit" class="btn">Сохранить</button></p>
+  </form>
+{% endblock %}

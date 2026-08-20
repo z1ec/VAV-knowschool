@@ -1181,6 +1181,11 @@ section[id] {
   border-radius: 999px;
 }
 
+.price-card__pending--known {
+  background: var(--price-accent, var(--color-accent));
+  color: #fff;
+}
+
 .price-card--main {
   grid-column: 1 / -1;
   background: linear-gradient(150deg, #12336b, #0a1f44);
@@ -2006,6 +2011,26 @@ section[id] {
   font-family: inherit;
   cursor: pointer;
   box-shadow: 0 10px 26px rgba(255, 210, 94, .26);
+}
+
+.contact-form__submit:disabled {
+  opacity: .6;
+  cursor: default;
+}
+
+.contact-form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact-form__error {
+  grid-column: span 2;
+  margin: 0;
+  color: #a12727;
+  font-size: 14px;
 }
 
 @media (max-width: 860px) {

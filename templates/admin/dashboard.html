@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Дашборд — Хочу всё знать{% endblock %}
+
+{% block content %}
+  <h1>Добро пожаловать, {{ current_user.username }}</h1>
+  <p><a href="{{ url_for('admin_prices') }}">Редактировать цены →</a></p>
+  <p>Раздел «Заявки» появится здесь на следующем этапе.</p>
+{% endblock %}

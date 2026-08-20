@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Вход в админку — Хочу всё знать{% endblock %}
+
+{% block content %}
+  <div class="admin-login">
+    <h1 class="admin-login__title">Вход в админку</h1>
+    <form method="post" class="admin-login__form" novalidate>
+      {{ form.hidden_tag() }}
+      <label class="admin-login__field">
+        <span>Логин</span>
+        {{ form.username(class_="admin-login__input") }}
+      </label>
+      <label class="admin-login__field">
+        <span>Пароль</span>
+        {{ form.password(class_="admin-login__input") }}
+      </label>
+      <button type="submit" class="btn admin-login__submit">Войти</button>
+    </form>
+  </div>
+{% endblock %}

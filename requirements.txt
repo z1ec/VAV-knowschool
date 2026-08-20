@@ -1,0 +1,6 @@
+Flask>=3.0,<4
+gunicorn
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Flask-Limiter

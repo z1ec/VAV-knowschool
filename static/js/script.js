@@ -101,11 +101,37 @@ function initReviewToggles() {
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('contactSubmit');
-  if (!form || !submitBtn) return;
+  const errorEl = document.getElementById('contactError');
+  if (!form || !submitBtn || !errorEl) return;
+  const originalLabel = submitBtn.textContent;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    submitBtn.textContent = 'Заявка отправлена ✓';
+    if (submitBtn.disabled) return;
+
+    errorEl.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка…';
+
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
+      const data = await res.json();
+
+      if (res.ok && data.ok) {
+        submitBtn.textContent = 'Заявка отправлена ✓';
+        form.reset();
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        errorEl.textContent = data.error || 'Не удалось отправить заявку, попробуйте позже';
+        errorEl.hidden = false;
+      }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      errorEl.textContent = 'Не удалось отправить заявку, проверьте соединение и попробуйте снова';
+      errorEl.hidden = false;
+    }
   });
 }
 
