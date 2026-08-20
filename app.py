@@ -1,6 +1,6 @@
 import logging
 import os
-from datetime import timedelta
+from datetime import date, timedelta
 
 from flask import Flask, Response, flash, jsonify, redirect, render_template, request, url_for
 from flask_limiter import Limiter
@@ -184,6 +184,20 @@ def sync_prices():
 with app.app_context():
     bootstrap()
     sync_prices()
+
+
+def _academic_year_label():
+    today = date.today()
+    start_year = today.year if today >= date(today.year, 8, 20) else today.year - 1
+    return f"{start_year}–{start_year + 1}"
+
+
+@app.context_processor
+def inject_year_labels():
+    return {
+        "current_year": date.today().year,
+        "academic_year": _academic_year_label(),
+    }
 
 
 def _price_cards_for_display():
