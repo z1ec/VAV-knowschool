@@ -23,6 +23,9 @@ COURSE_CHOICES = [
 
 class ContactForm(FlaskForm):
     name = StringField("Имя", validators=[DataRequired(), Length(max=120)])
-    phone = StringField("Телефон", validators=[DataRequired(), Length(max=32)])
+    phone = StringField(
+        "Телефон",
+        validators=[DataRequired(), Length(min=10, max=32, message="Телефон должен быть от 10 до 32 символов")],
+    )
     course = SelectField("Курс", choices=[(c, c) for c in COURSE_CHOICES])
     consent = BooleanField("Согласие", validators=[DataRequired()])
