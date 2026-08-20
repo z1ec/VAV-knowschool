@@ -1133,10 +1133,8 @@ section[id] {
 }
 
 .prices__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: start;
-  gap: 16px;
+  column-count: 2;
+  column-gap: 16px;
 }
 
 .price-card {
@@ -1149,6 +1147,8 @@ section[id] {
   flex-direction: column;
   gap: 14px;
   min-height: 150px;
+  break-inside: avoid;
+  margin-bottom: 16px;
 }
 
 .price-card__blob {
@@ -1234,7 +1234,8 @@ section[id] {
 }
 
 .price-card--main {
-  grid-column: 1 / -1;
+  column-span: all;
+  margin-bottom: 16px;
   background: linear-gradient(150deg, #12336b, #0a1f44);
   color: #fff;
   padding: clamp(26px, 3vw, 36px);
@@ -1291,19 +1292,9 @@ section[id] {
   color: #8fa3c4;
 }
 
-@media (max-width: 860px) {
-  .prices__grid {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .price-card--main {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 620px) {
   .prices__grid {
-    grid-template-columns: 1fr !important;
+    column-count: 1;
   }
 
   .price-table {

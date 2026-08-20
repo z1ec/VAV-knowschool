@@ -394,7 +394,7 @@
       <div class="prices__grid">
         {% for card in price_cards %}
           {% if card.is_main %}
-            <div class="price-card price-card--main tile lift">
+            <div class="price-card price-card--main">
               <div class="price-card__heading">{{ card.title }}</div>
 
               <div class="price-table">
@@ -416,7 +416,7 @@
               </div>
             </div>
           {% else %}
-            <div class="price-card tile lift" style="{{ card.style_attr }}">
+            <div class="price-card" style="{{ card.style_attr }}">
               <div class="price-card__blob"></div>
               <div class="price-card__heading">{{ card.title }}</div>
               <div class="price-card__list">
