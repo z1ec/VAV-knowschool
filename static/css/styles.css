@@ -2,6 +2,17 @@
    Хочу всё знать — стили лендинга
    ========================================================= */
 
+/* Golos Text — вариативный шрифт, self-hosted. Лицензия SIL OFL 1.1,
+   см. static/fonts/GolosText-OFL.txt. Источник: fonts.google.com/specimen/Golos+Text */
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/GolosText-Variable.woff2') format('woff2-variations'),
+       url('../fonts/GolosText-Variable.woff2') format('woff2');
+}
+
 :root {
   --color-bg: #e9eef6;
   --color-text: #0a1f44;

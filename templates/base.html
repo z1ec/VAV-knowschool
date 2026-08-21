@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Хочу всё знать — языковой центр в Зеленограде{% endblock %}</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link rel="preload" href="{{ url_for('static', filename='fonts/GolosText-Variable.woff2') }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   {% block extra_head %}{% endblock %}
 </head>
