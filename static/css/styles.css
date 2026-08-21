@@ -276,7 +276,8 @@ section[id] {
 }
 
 .mobile-menu.is-open {
-  max-height: 320px;
+  max-height: min(420px, calc(100vh - 72px));
+  overflow-y: auto;
 }
 
 .mobile-menu__nav {

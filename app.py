@@ -1,6 +1,7 @@
 import logging
 import os
 from datetime import date, timedelta
+from urllib.parse import urlparse
 
 from flask import Flask, Response, flash, jsonify, redirect, render_template, request, url_for
 from flask_limiter import Limiter
@@ -24,20 +25,64 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__, instance_relative_config=True)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_for=1)
 
-app.config["SECRET_KEY"] = os.environ.get("FLASK_SECRET_KEY", "dev")
+_is_dev = os.environ.get("FLASK_ENV") == "development"
+
+_secret_key = os.environ.get("FLASK_SECRET_KEY")
+if not _secret_key:
+    if _is_dev:
+        _secret_key = "dev"
+    else:
+        raise RuntimeError(
+            "FLASK_SECRET_KEY must be set unless FLASK_ENV=development "
+            "(an unset key falling back silently would let sessions be forged)"
+        )
+app.config["SECRET_KEY"] = _secret_key
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{app.instance_path}/app.db"
 
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
-app.config["SESSION_COOKIE_SECURE"] = os.environ.get("FLASK_ENV") != "development"
+app.config["SESSION_COOKIE_SECURE"] = not _is_dev
 app.config["REMEMBER_COOKIE_DURATION"] = timedelta(days=7)
+# Flask-Login's remember cookie defaults (Secure=False, SameSite=None) don't
+# follow SESSION_COOKIE_*, so without this the persistent login cookie set by
+# login_user(remember=True) would be sendable over plain HTTP.
+app.config["REMEMBER_COOKIE_SECURE"] = not _is_dev
+app.config["REMEMBER_COOKIE_SAMESITE"] = "Lax"
 app.permanent_session_lifetime = timedelta(days=7)
 
 os.makedirs(app.instance_path, exist_ok=True)
 
 db.init_app(app)
 csrf = CSRFProtect(app)
+# In-memory storage is per gunicorn worker process, so with -w 2 the
+# effective ceiling on @limiter.limit() routes is roughly double the
+# configured rate. Acceptable for this site's traffic; if that ever changes,
+# switch storage_uri to a shared backend (e.g. Redis) to make limits exact.
 limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
+
+_CSP = (
+    "default-src 'self'; "
+    "script-src 'self' https://smartcaptcha.yandexcloud.net; "
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+    "font-src 'self' https://fonts.gstatic.com; "
+    "img-src 'self' data:; "
+    "frame-src https://yandex.ru https://smartcaptcha.yandexcloud.net; "
+    "connect-src 'self' https://smartcaptcha.yandexcloud.net; "
+    "frame-ancestors 'none'; "
+    "base-uri 'self'; "
+    "form-action 'self'"
+)
+
+
+@app.after_request
+def set_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Content-Security-Policy"] = _CSP
+    if app.config["SESSION_COOKIE_SECURE"]:
+        response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains"
+    return response
 
 
 @event.listens_for(Engine, "connect")
@@ -200,6 +245,15 @@ def inject_year_labels():
     }
 
 
+@app.template_filter("moscow_time")
+def format_moscow_time(dt):
+    """created_at is stored as naive UTC (SQLite's CURRENT_TIMESTAMP); shift
+    it to Moscow time (fixed UTC+3, no DST) for display in the admin panel."""
+    if dt is None:
+        return ""
+    return (dt + timedelta(hours=3)).strftime("%d.%m.%Y %H:%M")
+
+
 def _price_cards_for_display():
     price_rows = {(r.card_key, r.row_index): r for r in PriceRow.query.all()}
     cards = []
@@ -325,8 +379,20 @@ def api_contact():
     return jsonify(ok=True)
 
 
+def _safe_next_url(next_url):
+    """Only allow same-site relative paths, rejecting scheme-relative URLs
+    like //evil.com (which browsers resolve as a redirect to evil.com even
+    though it passes a naive startswith("/") check)."""
+    if not next_url or next_url.startswith("//") or next_url.startswith("/\\"):
+        return None
+    parsed = urlparse(next_url)
+    if parsed.scheme or parsed.netloc or not next_url.startswith("/"):
+        return None
+    return next_url
+
+
 @app.route("/admin/login", methods=["GET", "POST"])
-@limiter.limit("5 per minute")
+@limiter.limit("3 per minute")
 def admin_login():
     if current_user.is_authenticated:
         return redirect(url_for("admin_dashboard"))
@@ -336,9 +402,7 @@ def admin_login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password_hash, form.password.data):
             login_user(user, remember=True)
-            next_url = request.args.get("next")
-            if next_url and not next_url.startswith("/"):
-                next_url = None
+            next_url = _safe_next_url(request.args.get("next"))
             return redirect(next_url or url_for("admin_dashboard"))
         flash("Неверный логин или пароль", "danger")
 
