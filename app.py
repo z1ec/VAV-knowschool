@@ -273,7 +273,23 @@ def healthz():
 
 @app.route("/robots.txt")
 def robots_txt():
-    return Response("User-agent: *\nDisallow: /admin/\n", mimetype="text/plain")
+    sitemap_url = url_for("sitemap_xml", _external=True)
+    return Response(
+        f"User-agent: *\nDisallow: /admin/\n\nSitemap: {sitemap_url}\n",
+        mimetype="text/plain",
+    )
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    pages = [
+        {"loc": url_for("index", _external=True), "priority": "1.0"},
+        {"loc": url_for("svedeniya", _external=True), "priority": "0.5"},
+        {"loc": url_for("privacy_policy", _external=True), "priority": "0.3"},
+        {"loc": url_for("consent_data_processing", _external=True), "priority": "0.3"},
+        {"loc": url_for("cookie_policy", _external=True), "priority": "0.3"},
+    ]
+    return Response(render_template("sitemap.xml", pages=pages), mimetype="application/xml")
 
 
 @app.route("/favicon.ico")

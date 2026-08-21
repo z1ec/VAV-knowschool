@@ -1,5 +1,172 @@
 {% extends "base.html" %}
 
+{% block extra_head %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "EducationalOrganization",
+      "LocalBusiness"
+    ],
+    "@id": "https://knowschool.ru/#organization",
+    "name": "Хочу всё знать",
+    "alternateName": "АНО ДО КОЦ «НОУ СКУЛ»",
+    "url": "https://knowschool.ru/",
+    "logo": "https://knowschool.ru/static/assets/logo_knowschool.webp",
+    "image": "https://knowschool.ru/static/assets/og-cover.jpg",
+    "telephone": "+7-985-742-95-21",
+    "email": "nowschool@yandex.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14-й микрорайон, корпус 1432, н.п. 6А",
+      "addressLocality": "Зеленоград",
+      "addressRegion": "Москва",
+      "addressCountry": "RU"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "12:00",
+      "closes": "21:00"
+    },
+    "sameAs": [
+      "https://vk.ru/zel_knowschool",
+      "https://yandex.ru/maps/org/khochu_vsyo_znat/1088892966"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "reviewCount": "68"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "feerinka"
+        },
+        "datePublished": "2026-06-30",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Отличная школа! Дети ходят с удовольствием! Сначала ходили к репетиторам на дом, но детям не хотелось заниматься, не нравилось. Решили сменить учителей и пойти именно в лингвистическую школу. В «Хочу все знать» детям действительно нравится учиться, им интересно и они стараются. Преподаватели смогли найти подход к каждому ребенку. Администраторы отзывчивые, добрые люди. В самой школе уютно и комфортно. Мы очень довольны."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Елена Ч."
+        },
+        "datePublished": "2024-09-07",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Дочка занималась два года, учила английский и немецкий языки. Ей очень нравилось. Педагоги замечательные. Теперь ходит сын на занятия и ему тоже очень нравится. Группы маленькие, 3–4 человека. К каждому ребенку находят подход. Кто ищет хорошую школу с иностранными языками — советую."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Anastasiya O."
+        },
+        "datePublished": "2024-07-31",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Занимаемся в языковом центре не первый год. Сын учит немецкий, я занималась английским. Это лучшая языковая школа города, могу с уверенностью это утверждать, т.к. меняли несколько и везде были свои нюансы. Тут всё отлично! Преподаватель находит подход к ученику и делает всё, чтоб материал был усвоен. Это не формальный подход, как во многих других школах, а работа на результат. Если действительно нужно выучить язык и хотите, чтоб ребенок или вы сами шли на урок с удовольствием — вам однозначно сюда."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://knowschool.ru/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Мы хотим попробовать заниматься у вас, но вдруг нам не понравится?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Первое занятие в нашем центре бесплатное."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как формируются группы?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Формирование групп проводится по двум основным правилам: возраст и уровень владения языком."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "В каком формате проходят уроки?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Занятия проходят в мини-группах, парах, индивидуально оффлайн и онлайн."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Что делать, если пропустил урок?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Если вы посещаете групповые занятия, то при болезни (есть справка) мы пересчитаем оплату на следующий месяц в размере 50% от стоимости пропущенных занятий. Если пропуск по другим причинам, то стоимость занятия сгорает. Если вы посещаете индивидуальные занятия, то вы должны предупредить минимум за 5 часов и мы его перенесем на другой день."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Работаете ли вы во время школьных каникул или государственных праздников?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Во время государственных праздников центр не работает. Во время школьных каникул занятия идут по расписанию. В летний период занятия по желанию."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Предполагает ли подготовка в вашем центре выполнение домашней работы учеником?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Мы задаем домашние задания и для успешного усвоения программы рекомендуем выполнять их."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Нужно ли покупать учебники?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, для результативного обучения мы используем учебники иностранных издательств, которые позволяют интересно и структурировано подойти к изучению языка. Комплект включает учебник и рабочую тетрадь."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как можно оплатить занятия?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "В начале месяца мы выдаем квитанцию на оплату. Ее можно оплатить в любом онлайн-банке по QR коду или реквизитам, либо в любом отделении Сбербанка."
+        }
+      }
+    ]
+  }
+  </script>
+{% endblock %}
+
 {% block content %}
   <main id="top" class="container">
 
@@ -10,7 +177,7 @@
           <span class="hero__stars">★★★★★</span>
           5.0
           <span class="hero__badge">
-            <img class="hero__badge-icon" src="{{ url_for('static', filename='assets/good-place-badge.png') }}" alt="" loading="lazy">
+            <img class="hero__badge-icon" src="{{ url_for('static', filename='assets/good-place-badge.webp') }}" width="120" height="80" alt="" loading="lazy">
             Хорошее место 2026
           </span>
         </div>
@@ -44,7 +211,7 @@
           <div class="hero-card__blob hero-card__blob--top"></div>
           <div class="hero-card__blob hero-card__blob--bottom"></div>
           <div class="hero-card__glow"></div>
-          <img src="{{ url_for('static', filename='assets/girl.png') }}" alt="Ученица центра" class="hero-card__image">
+          <img src="{{ url_for('static', filename='assets/girl.webp') }}" width="1536" height="1024" alt="Ученица центра" class="hero-card__image">
         </div>
 
         <div class="hero-stat hero-stat--years tile">
@@ -102,7 +269,7 @@
         </div>
 
         <div class="promo-card promo-card--yearround tile lift">
-          <img class="promo-card__photo" src="{{ url_for('static', filename='assets/boy.png') }}" alt="" loading="lazy">
+          <img class="promo-card__photo" src="{{ url_for('static', filename='assets/boy.webp') }}" width="1536" height="1024" alt="" loading="lazy">
           <div class="promo-card__blob promo-card__blob--1"></div>
           <div class="promo-card__blob promo-card__blob--2"></div>
           <div class="promo-card__scrim"></div>
@@ -123,47 +290,47 @@
       <div class="lang-picker">
         <div class="lang-list" id="langList">
           <button class="lang-list__item is-active" data-index="0" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" width="1000" height="600" alt="" loading="lazy">
             <span class="lang-list__title">Английский</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="1" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/de.png') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/de.png') }}" width="3840" height="2304" alt="" loading="lazy">
             <span class="lang-list__title">Немецкий</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="2" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/es.svg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/es.svg') }}" width="750" height="500" alt="" loading="lazy">
             <span class="lang-list__title">Испанский</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="3" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/cn.svg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/cn.svg') }}" width="900" height="600" alt="" loading="lazy">
             <span class="lang-list__title">Китайский</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="4" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/ko.svg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/ko.svg') }}" width="900" height="600" alt="" loading="lazy">
             <span class="lang-list__title">Корейский</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="5" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/it.jpg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/it.jpg') }}" width="740" height="416" alt="" loading="lazy">
             <span class="lang-list__title">Итальянский</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="6" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/la.png') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/la.png') }}" width="250" height="250" alt="" loading="lazy">
             <span class="lang-list__title">Латынь</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="7" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/ru.png') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/ru.png') }}" width="1280" height="853" alt="" loading="lazy">
             <span class="lang-list__title">Русский язык</span>
             <span class="lang-list__arrow">→</span>
           </button>
           <button class="lang-list__item" data-index="8" type="button">
-            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+            <img class="lang-list__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" width="1000" height="600" alt="" loading="lazy">
             <span class="lang-list__title">Подготовка к ОГЭ и ЕГЭ по английскому</span>
             <span class="lang-list__arrow">→</span>
           </button>
@@ -175,7 +342,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" width="1000" height="600" alt="" loading="lazy">
                 <span class="lang-detail__country">ВЕЛИКОБРИТАНИЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -201,7 +368,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/de.png') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/de.png') }}" width="3840" height="2304" alt="" loading="lazy">
                 <span class="lang-detail__country">ГЕРМАНИЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -226,7 +393,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/es.svg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/es.svg') }}" width="750" height="500" alt="" loading="lazy">
                 <span class="lang-detail__country">ИСПАНИЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -250,7 +417,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/cn.svg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/cn.svg') }}" width="900" height="600" alt="" loading="lazy">
                 <span class="lang-detail__country">КИТАЙ</span>
               </div>
               <div class="lang-detail__copy">
@@ -274,7 +441,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/ko.svg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/ko.svg') }}" width="900" height="600" alt="" loading="lazy">
                 <span class="lang-detail__country">ЮЖНАЯ КОРЕЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -298,7 +465,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/it.jpg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/it.jpg') }}" width="740" height="416" alt="" loading="lazy">
                 <span class="lang-detail__country">ИТАЛИЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -322,7 +489,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/la.png') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/la.png') }}" width="250" height="250" alt="" loading="lazy">
                 <span class="lang-detail__country">ВАТИКАН</span>
               </div>
               <div class="lang-detail__copy">
@@ -346,7 +513,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/ru.png') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/ru.png') }}" width="1280" height="853" alt="" loading="lazy">
                 <span class="lang-detail__country">РОССИЯ</span>
               </div>
               <div class="lang-detail__copy">
@@ -369,7 +536,7 @@
             <div class="lang-detail__blob lang-detail__blob--2"></div>
             <div class="lang-detail__top">
               <div class="lang-detail__country-row">
-                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" alt="" loading="lazy">
+                <img class="lang-detail__flag" src="{{ url_for('static', filename='assets/flags/en.svg') }}" width="1000" height="600" alt="" loading="lazy">
                 <span class="lang-detail__country">ЭКЗАМЕНЫ</span>
               </div>
               <div class="lang-detail__copy">
@@ -461,7 +628,7 @@
       <div class="about__grid">
         <div class="about-card tile">
           <div class="about-card__top">
-            <h2 class="about-card__title">Учим языкам с 2005 года, чтобы вы свободно говорили, а не просто знали правила.</h2>
+            <h3 class="about-card__title">Учим языкам с 2005 года, чтобы вы свободно говорили, а не просто знали правила.</h3>
             <div class="about-card__badge">
               <div class="about-card__badge-value">20+ лет опыта</div>
               <div class="about-card__badge-label">обучения в Зеленограде</div>
@@ -572,7 +739,7 @@
         <div class="review-summary tile">
           <div>
             <div class="review-summary__source">
-              <img class="review-summary__badge" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" alt="Яндекс">
+              <img class="review-summary__badge" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" width="1280" height="1280" alt="Яндекс">
               <span class="review-summary__name">Яндекс Карты</span>
             </div>
             <div class="review-summary__score">
@@ -602,7 +769,7 @@
               <div class="review-card__name">feerinka</div>
               <div class="review-card__role">родитель учеников</div>
             </div>
-            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" alt="" title="Отзыв с Яндекс Карт">
+            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" width="1280" height="1280" alt="" title="Отзыв с Яндекс Карт">
           </div>
         </div>
 
@@ -622,7 +789,7 @@
               <div class="review-card__name">Елена Ч.</div>
               <div class="review-card__role">мама ученицы и ученика</div>
             </div>
-            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" alt="" title="Отзыв с Яндекс Карт">
+            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" width="1280" height="1280" alt="" title="Отзыв с Яндекс Карт">
           </div>
         </div>
 
@@ -644,7 +811,7 @@
               <div class="review-card__name">Anastasiya O.</div>
               <div class="review-card__role">родитель ученика</div>
             </div>
-            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" alt="" title="Отзыв с Яндекс Карт">
+            <img class="review-card__source" src="{{ url_for('static', filename='assets/Yandex_icon.svg.png') }}" width="1280" height="1280" alt="" title="Отзыв с Яндекс Карт">
           </div>
         </div>
       </div>
@@ -745,16 +912,16 @@
 
       <div class="gallery__grid">
         <div class="gallery-photo gallery-photo--left tile lift">
-          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/entrance.jpg') }}" alt="Вход в языковой центр «Хочу всё знать»" loading="lazy">
+          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/entrance.jpg') }}" width="960" height="1280" alt="Вход в языковой центр «Хочу всё знать»" loading="lazy">
         </div>
         <div class="gallery-photo gallery-photo--mid-top tile lift">
-          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-2.jpg') }}" alt="Учебный класс с круглым столом" loading="lazy">
+          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-2.jpg') }}" width="960" height="1280" alt="Учебный класс с круглым столом" loading="lazy">
         </div>
         <div class="gallery-photo gallery-photo--mid-bottom tile lift">
-          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-1.jpg') }}" alt="Учебный класс для занятий языком" loading="lazy">
+          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-1.jpg') }}" width="960" height="1280" alt="Учебный класс для занятий языком" loading="lazy">
         </div>
         <div class="gallery-photo gallery-photo--right tile lift">
-          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-kids.jpg') }}" alt="Класс для занятий с детьми" loading="lazy">
+          <img class="gallery-photo__img" src="{{ url_for('static', filename='assets/gallery/classroom-kids.jpg') }}" width="960" height="1280" alt="Класс для занятий с детьми" loading="lazy">
         </div>
       </div>
     </section>

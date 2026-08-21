@@ -5,6 +5,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Хочу всё знать — языковой центр в Зеленограде{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Языковой центр «Хочу всё знать» в Зеленограде: 8 языков для детей и взрослых, мини-группы до 4 человек, опытные педагоги. Первое занятие — бесплатно.{% endblock %}">
+  <link rel="canonical" href="{{ request.url_root[:-1] + request.path }}">
+  <meta name="theme-color" content="#0d47c1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Хочу всё знать">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
+  <meta property="og:url" content="{{ request.url_root[:-1] + request.path }}">
+  <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='assets/og-cover.jpg', _external=True) }}{% endblock %}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ self.og_title() }}">
+  <meta name="twitter:description" content="{{ self.og_description() }}">
+  <meta name="twitter:image" content="{{ self.og_image() }}">
+
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">
   <link rel="preload" href="{{ url_for('static', filename='fonts/GolosText-Variable.woff2') }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -17,7 +36,7 @@
   <header class="site-header">
     <div class="site-header__bar container">
       <a href="{{ '#top' if request.endpoint == 'index' else url_for('index') }}" class="logo">
-        <img src="{{ url_for('static', filename='assets/logo_knowschool.png') }}" alt="Хочу всё знать" class="logo__image">
+        <img src="{{ url_for('static', filename='assets/logo_knowschool.webp') }}" width="160" height="240" alt="Хочу всё знать" class="logo__image">
         <span class="logo__text">Хочу всё<br>знать</span>
       </a>
 
@@ -62,7 +81,7 @@
     <div class="site-footer__top">
       <div class="footer-about">
         <a href="{{ '#top' if request.endpoint == 'index' else url_for('index') }}" class="footer-logo">
-          <img src="{{ url_for('static', filename='assets/logo_knowschool.png') }}" alt="Хочу всё знать" class="footer-logo__image">
+          <img src="{{ url_for('static', filename='assets/logo_knowschool.webp') }}" width="160" height="240" alt="Хочу всё знать" class="footer-logo__image">
         </a>
         <p class="footer-about__text">Языковой центр в Зеленограде. Учим детей и взрослых говорить на восьми языках с
           2005 года.</p>
