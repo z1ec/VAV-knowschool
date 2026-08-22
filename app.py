@@ -444,5 +444,49 @@ def admin_logout():
     return redirect(url_for("admin_login"))
 
 
+# URLs indexed since the old Bitrix site (live 2010-2026) -- redirected here
+# instead of left to 404 so search rankings/backlinks carry over. `None`
+# means that content (French, general child-development classes) was
+# discontinued and has no equivalent section, so it goes to the homepage.
+_LEGACY_REDIRECTS = {
+    "/languages/": "programs",
+    "/languages/eng/": "programs",
+    "/languages/deu/": "programs",
+    "/languages/spa/": "programs",
+    "/languages/ita/": "programs",
+    "/languages/zho/": "programs",
+    "/languages/fra/": None,
+    "/english-zelenograd/": "programs",
+    "/english-zelenograd/general/": "programs",
+    "/english-zelenograd/ege/": "programs",
+    "/english-zelenograd/exams/": "programs",
+    "/english-zelenograd/intensive/": "programs",
+    "/english-zelenograd/business/": "programs",
+    "/english-zelenograd/repetitor/": "programs",
+    "/german-zelenograd/": "programs",
+    "/spanish-zelenograd/": "programs",
+    "/italian-zelenograd/": "programs",
+    "/chines-zelenograd/": "programs",
+    "/france-zelenograd/": None,
+    "/kids/": "programs",
+    "/young/": None,
+    "/about/": "about",
+    "/about/contacts/": "zayavka",
+}
+
+
+def _make_legacy_redirect(anchor):
+    target = f"/#{anchor}" if anchor else "/"
+
+    def _redirect():
+        return redirect(target, code=301)
+
+    return _redirect
+
+
+for _i, (_path, _anchor) in enumerate(_LEGACY_REDIRECTS.items()):
+    app.add_url_rule(_path, endpoint=f"legacy_redirect_{_i}", view_func=_make_legacy_redirect(_anchor))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
